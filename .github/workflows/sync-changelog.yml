@@ -1,0 +1,67 @@
+name: Sync Website Changelog
+
+on:
+  push:
+    paths:
+      - "update.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync current version into changelog
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          update = json.loads(Path("update.json").read_text(encoding="utf-8"))
+          path = Path("changelog.json")
+          if path.exists():
+              history = json.loads(path.read_text(encoding="utf-8"))
+          else:
+              history = []
+
+          version = str(update.get("versionName", "")).lstrip("v")
+          notes = str(update.get("notes", "")).strip()
+          today = datetime.now(ZoneInfo("Asia/Taipei")).strftime("%Y-%m-%d")
+
+          found = False
+          for item in history:
+              if str(item.get("version","")).lstrip("v") == version:
+                  item["notes"] = notes or item.get("notes","")
+                  item["date"] = item.get("date") or today
+                  found = True
+                  break
+
+          if version and not found:
+              history.insert(0, {"version": version, "date": today, "notes": notes})
+
+          def key(item):
+              try:
+                  return tuple(int(x) for x in str(item.get("version","0")).split("."))
+              except Exception:
+                  return (0,)
+          history.sort(key=key, reverse=True)
+          path.write_text(json.dumps(history, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+          PY
+
+      - name: Commit changelog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add changelog.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Sync website version history"
+          git pull --rebase origin main
+          git push origin main
