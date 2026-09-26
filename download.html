@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="description" content="下載 HTA 趟訊 Android App。查看目前版本、安裝步驟、系統需求與授權開通方式。">
+  <link rel="canonical" href="https://htaxun.com/download.html">
+  <link rel="icon" type="image/webp" href="hta-tangxun-icon.webp">
+  <link rel="apple-touch-icon" href="hta-tangxun-icon.webp">
+  <title>下載 HTA 趟訊｜Android App</title>
+  <style>
+    :root{
+      --bg:#090a0e;--panel:#11141a;--panel2:#171b22;--text:#f7f8fb;--muted:#9ca4b1;
+      --line:rgba(255,255,255,.09);--gold:#d8ab5d;--gold2:#f1d698;--red:#ef3656;--red2:#bd1535;
+      --green:#06c755;--max:760px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:
+      radial-gradient(700px 420px at 50% -120px,rgba(216,171,93,.14),transparent 65%),
+      linear-gradient(180deg,#090a0e,#0a0c10 60%,#08090c);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      line-height:1.65;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--max),calc(100% - 34px));margin:auto}
+    nav{
+      position:sticky;top:0;z-index:40;background:rgba(9,10,14,.86);backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(216,171,93,.18)
+    }
+    .navin{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:850}
+    .brand img{width:34px;height:34px;border-radius:10px}
+    .brand small{color:#7d8592;font-weight:650;margin-left:4px}
+    .back{color:#abb2bd;font-size:14px;font-weight:750}
+    .back:hover{color:var(--gold2)}
+
+    .hero{
+      position:relative;overflow:hidden;text-align:center;
+      padding:54px 0 46px;
+      background:linear-gradient(135deg,#d9ad60 0%,#f0d29a 48%,#cb9848 100%);
+      color:#15110b;
+    }
+    .hero::before{
+      content:"";position:absolute;width:430px;height:430px;left:50%;top:-210px;transform:translateX(-50%);
+      background:url("hta-tangxun-icon.webp") center/contain no-repeat;opacity:.11;filter:saturate(.9)
+    }
+    .icon{position:relative;width:112px;height:112px;border-radius:26px;object-fit:cover;margin:0 auto 22px;
+      box-shadow:0 18px 46px rgba(39,25,3,.28),7px 7px 0 rgba(20,16,8,.18)}
+    h1{position:relative;margin:0;font-size:clamp(34px,7vw,50px);line-height:1.06;letter-spacing:-.04em}
+    .hero p{position:relative;margin:12px 0 0;font-weight:650;color:#4f3b17}
+    .ver{
+      position:relative;display:inline-block;margin-top:18px;border-radius:999px;padding:7px 15px;
+      background:#111318;color:#f0cf8f;font-weight:850;font-size:14px
+    }
+    .divider{height:7px;background:linear-gradient(90deg,var(--red),var(--gold),var(--red))}
+
+    main{padding:46px 0 70px}
+    .download{text-align:center}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 24px;border-radius:14px;
+      font-weight:850;border:1px solid var(--line);transition:.18s ease;cursor:pointer
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn.downloadBtn{
+      min-width:min(100%,390px);background:linear-gradient(135deg,var(--red),var(--red2));border-color:transparent;
+      box-shadow:0 18px 45px rgba(239,54,86,.2);font-size:18px
+    }
+    .btn.lineBtn{background:var(--green);border-color:transparent;color:white}
+    .meta{color:var(--muted);font-size:13px;margin-top:13px}
+    .meta b{color:#fff}
+    .alt{margin-top:12px;font-size:14px}.alt a{color:var(--gold2);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+
+    .notice{
+      margin-top:34px;border:1px solid rgba(216,171,93,.25);background:rgba(216,171,93,.055);
+      border-radius:16px;padding:16px 18px;color:#c9cfd8;font-size:13px;text-align:left
+    }
+    .notice b{color:var(--gold2)}
+
+    .spec{margin:34px 0 0;border:1px solid rgba(216,171,93,.26);border-radius:18px;overflow:hidden}
+    .row{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--line)}
+    .row:last-child{border-bottom:0}
+    .label{padding:15px 17px;background:#141820;color:var(--gold2);font-weight:850;font-size:14px}
+    .value{padding:15px 17px;color:#d7dbe3;font-size:14px}
+    .value b{color:#fff}
+
+    section{margin-top:46px}
+    h2{font-size:24px;letter-spacing:-.02em;margin:0 0 8px}
+    .lead{color:var(--muted);font-size:14px;margin:0 0 18px}
+    .steps{display:grid;gap:0}
+    .step{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-bottom:1px dashed rgba(255,255,255,.12)}
+    .step:last-child{border-bottom:0}
+    .num{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#ef3656,#b81735);display:grid;place-items:center;font-weight:900}
+    .step b{display:block;font-size:16px}.step span{display:block;color:var(--muted);font-size:13px;margin-top:3px}
+
+    .pricing{
+      border:1px solid var(--line);border-radius:20px;padding:22px;background:linear-gradient(145deg,#151922,#0e1116)
+    }
+    .pricingTop{display:flex;align-items:end;justify-content:space-between;gap:14px}
+    .priceTag{font-size:34px;font-weight:900;color:var(--gold2)}
+    .pricing p{color:var(--muted);font-size:13px;margin:8px 0 0}
+    .pricing .small{font-size:12px;color:#7f8794;margin-top:5px}
+
+    .warning{
+      margin-top:40px;background:#12161d;border:1px solid var(--line);border-radius:18px;padding:18px;
+      color:#c2c8d2;font-size:13px
+    }
+    .warning b{color:var(--gold2)}
+
+    .support{text-align:center;margin-top:46px;padding-top:34px;border-top:1px solid var(--line)}
+    .support p{color:var(--muted);font-size:13px}
+
+    footer{padding:32px 0 60px;color:#777f8c;font-size:12px;text-align:center;border-top:1px solid var(--line)}
+    footer a{text-decoration:underline;text-underline-offset:3px}
+
+    @media(max-width:560px){
+      .brand small{display:none}
+      .row{grid-template-columns:1fr}
+      .label{padding-bottom:7px}.value{padding-top:7px}
+      .pricingTop{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap navin">
+      <a class="brand" href="./"><img src="hta-tangxun-icon.webp" alt="">HTA 趟訊 <small>Android 車趟輔助</small></a>
+      <a class="back" href="./">← 回首頁</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <img class="icon" src="hta-tangxun-icon.webp" alt="HTA 趟訊 App 圖示">
+      <h1>下載 HTA 趟訊</h1>
+      <p>少刷群組・先看值得看的單</p>
+      <span class="ver" id="versionChip">目前版本載入中</span>
+    </div>
+  </header>
+  <div class="divider"></div>
+
+  <main>
+    <div class="wrap">
+      <div class="download">
+        <a class="btn downloadBtn" id="apkDownload" href="TripAlert-latest.apk" download="HTA趟訊-latest.apk">⬇ 下載 Android APK</a>
+        <div class="meta" id="apkMeta">Android 9 以上・APK 直接安裝</div>
+        <div class="meta" style="margin-top:5px"><b>iPhone（iOS）目前無法使用</b></div>
+        <div class="alt"><a href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">還沒開通？先加入官方 LINE →</a></div>
+      </div>
+
+      <div class="notice"><b>第一次安裝？</b> Android 可能會顯示「未知來源」或「不明應用程式」提示，這是因為 HTA 趟訊目前採官網 APK 安裝，不是從 Google Play 下載。請認明官方網站 <b>htaxun.com</b>。</div>
+
+      <div class="spec">
+        <div class="row"><div class="label">系統需求</div><div class="value">Android <b>9 以上</b>；目前不支援 iPhone（iOS）</div></div>
+        <div class="row"><div class="label">安裝方式</div><div class="value">從 <b>htaxun.com</b> 下載 APK，直接安裝</div></div>
+        <div class="row"><div class="label">使用前提</div><div class="value">需由官方 LINE 客服完成<b>試用或正式授權開通</b></div></div>
+        <div class="row"><div class="label">主要權限</div><div class="value">通知存取、定位、網路等功能所需權限；實際以 App 當下提示為準</div></div>
+        <div class="row"><div class="label">更新方式</div><div class="value">可直接覆蓋安裝新版，<b>不要先解除安裝舊版</b></div></div>
+      </div>
+
+      <section>
+        <h2>安裝只要 4 步</h2>
+        <p class="lead">第一次從官網安裝 APK 也不用怕，照下面做就好。</p>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div><b>下載 APK</b><span>用 Android 手機開這個頁面，按上方「下載 Android APK」。</span></div></div>
+          <div class="step"><div class="num">2</div><div><b>允許此來源安裝</b><span>若系統跳出安全提示，進入設定後允許目前瀏覽器或檔案管理員安裝 App。</span></div></div>
+          <div class="step"><div class="num">3</div><div><b>完成安裝並開啟</b><span>依 App 畫面完成通知、定位等必要設定。</span></div></div>
+          <div class="step"><div class="num">4</div><div><b>加入官方 LINE 開通</b><span>提供手機號碼與 App 顯示的裝置碼，由亞城協助開通 48 小時試用或正式授權。</span></div></div>
+        </div>
+      </section>
+
+      <section class="pricing">
+        <div class="pricingTop">
+          <div><div style="color:#f0d298;font-weight:850;font-size:13px">新用戶優惠</div><div class="priceTag">首月 NT$499</div></div>
+          <a class="btn lineBtn" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">LINE 申請試用／購買</a>
+        </div>
+        <p>先免費試用 48 小時，再決定是否購買。首月體驗價每位新用戶限一次，後續月繳 NT$599。</p>
+        <div class="small">不綁信用卡・不自動續費・付款方式由官方 LINE 客服提供。</div>
+      </section>
+
+      <div class="warning">
+        <b>安全提醒：</b>請只從 <b>https://htaxun.com</b> 下載 HTA 趟訊。不要安裝他人轉傳、重新包裝或來源不明的 APK。HTA 趟訊為輔助工具，距離、估價、順路與提醒資訊仍應由使用者自行確認。
+      </div>
+
+      <div class="support">
+        <a class="btn lineBtn" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">加入 HTA 趟訊官方 LINE</a>
+        <p>試用申請・購買續費・換機綁定・問題回報</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 HTA 趟訊・客服：亞城<br>
+      <a href="./">官網首頁</a> ・ <a href="privacy.html">隱私權政策</a> ・ <a href="terms.html">使用條款</a> ・ <a href="refund.html">退款與授權規則</a>
+    </div>
+  </footer>
+
+  <script>
+    fetch("update.json",{cache:"no-store"})
+      .then(r=>r.ok?r.json():null)
+      .then(d=>{
+        if(d&&d.versionName) document.getElementById("versionChip").textContent="目前版本 v"+String(d.versionName).replace(/^v/i,"");
+      })
+      .catch(()=>{document.getElementById("versionChip").textContent="HTA 趟訊最新版";});
+
+    fetch("TripAlert-latest.apk",{method:"HEAD",cache:"no-store"})
+      .then(r=>{
+        const n=Number(r.headers.get("content-length")||0);
+        if(n>0) document.getElementById("apkMeta").innerHTML='Android 9 以上・APK <b>約 '+(n/1048576).toFixed(1)+' MB</b>・直接安裝';
+      }).catch(()=>{});
+  </script>
+</body>
+</html>
