@@ -33,4 +33,5 @@ jobs:
           git add hta-main-demo.mp4 hta-main-demo-poster.jpg
           git diff --cached --quiet && exit 0
           git commit -m "Refresh HTA promo video"
-          git push
+          git pull --rebase origin main
+          git push origin main
