@@ -176,7 +176,7 @@ for i,p in enumerate(slide_paths,1):
     clip=OUT/f"clip{i}.mp4"
     subprocess.run([
         "ffmpeg","-y","-loop","1","-t","2.8","-i",str(p),
-        "-vf","zoompan=z='min(zoom+0.00045,1.025)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=68:s=1280x720:fps=24,fade=t=in:st=0:d=0.12,fade=t=out:st=2.68:d=0.12,format=yuv420p",
+        "-vf","zoompan=z='min(zoom+0.00045,1.025)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1280x720:fps=24,fade=t=in:st=0:d=0.12,fade=t=out:st=2.68:d=0.12,format=yuv420p",
         "-r","24","-c:v","libx264","-preset","veryfast","-crf","26","-an",str(clip)
     ],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     clips.append(clip)
