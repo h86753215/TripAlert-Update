@@ -8,6 +8,10 @@
   <link rel="canonical" href="https://htaxun.com/">
   <link rel="icon" type="image/webp" href="hta-tangxun-icon.webp">
   <link rel="apple-touch-icon" href="hta-tangxun-icon.webp">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="HTA 趟訊">
   <meta property="og:title" content="HTA 趟訊｜少刷群組，先看值得看的單">
   <meta property="og:description" content="Android LINE 車趟輔助工具｜48 小時免費試用｜首月 NT$499。">
   <meta property="og:image" content="https://htaxun.com/hta-tangxun-icon.webp">
@@ -59,8 +63,9 @@
 
     .quick{padding:24px 0 46px}
     .quickTitle{text-align:center;color:#8f97a5;font-size:13px;margin-bottom:15px}
-    .quickGrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+    .quickGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}
     .quickCard{
+      appearance:none;font:inherit;color:inherit;text-align:left;
       min-height:118px;border:1px solid var(--line);border-radius:18px;padding:17px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
       transition:.18s ease;display:flex;flex-direction:column;justify-content:space-between
     }
@@ -142,8 +147,9 @@
         <a class="quickCard" href="#video"><span class="quickIcon">▶</span><b>操作影片</b><small>實機畫面先看</small></a>
         <a class="quickCard" href="pricing.html"><span class="quickIcon">＄</span><b>方案價格</b><small>首月 499・月／季／年</small></a>
         <a class="quickCard" href="download.html"><span class="quickIcon">↓</span><b>下載 App</b><small>Android APK・安裝教學</small></a>
-        <a class="quickCard" href="updates.html"><span class="quickIcon">↻</span><b>版本更新</b><small>每版新增／優化／修正</small></a>
+        <a class="quickCard" href="updates.html"><span class="quickIcon">↻</span><b>版本更新</b><small id="currentVersionText">每版新增／優化／修正</small></a>
         <a class="quickCard" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener"><span class="quickIcon">●</span><b>官方 LINE</b><small>試用・購買・續費・客服</small></a>
+        <button class="quickCard" id="installShortcut" type="button" style="color:inherit;text-align:left;cursor:pointer"><span class="quickIcon">＋</span><b>建立桌面捷徑</b><small id="installShortcutText">像 App 一樣從桌面直接開官網</small></button>
       </div>
     </div>
   </section>
@@ -211,5 +217,42 @@
   <a class="btn ghost" href="download.html">下載 App</a>
   <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">48 小時試用</a>
 </div>
+
+<script>
+let deferredInstallPrompt = null;
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  const t = document.getElementById("installShortcutText");
+  if (t) t.textContent = "點一下加入手機桌面";
+});
+
+document.getElementById("installShortcut")?.addEventListener("click", async () => {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    return;
+  }
+  const ua = navigator.userAgent || "";
+  if (/iphone|ipad|ipod/i.test(ua)) {
+    alert("iPhone／iPad：請點 Safari 下方「分享」→「加入主畫面」。");
+  } else {
+    alert("Android：請點瀏覽器右上角「⋮」→「加到主畫面」或「安裝應用程式」。");
+  }
+});
+
+fetch("update.json",{cache:"no-store"})
+  .then(r=>r.ok?r.json():null)
+  .then(d=>{
+    if(!d||!d.versionName)return;
+    const el=document.getElementById("currentVersionText");
+    if(el) el.textContent="目前 v"+String(d.versionName).replace(/^v/i,"")+"・查看更新內容";
+  }).catch(()=>{});
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load",()=>navigator.serviceWorker.register("/service-worker.js").catch(()=>{}));
+}
+</script>
 </body>
 </html>
