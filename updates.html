@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#090a0e">
-  <meta name="description" content="HTA 趟訊版本更新紀錄。查看最新版版本號、新增功能、優化與修正內容。">
+  <meta name="description" content="HTA 趟訊版本更新紀錄。版本號與更新內容會跟著正式發佈資訊同步。">
   <link rel="canonical" href="https://htaxun.com/updates.html">
   <link rel="icon" type="image/webp" href="hta-tangxun-icon.webp">
+  <link rel="manifest" href="manifest.webmanifest">
   <title>版本更新｜HTA 趟訊</title>
   <style>
     :root{--bg:#090a0e;--panel:#11151c;--text:#f7f8fb;--muted:#9ca4b1;--line:rgba(255,255,255,.09);--gold:#d8ab5d;--gold2:#f1d698;--red:#ef3656;--green:#61e4a2;--max:860px}
@@ -15,14 +16,14 @@
     a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 34px));margin:auto}
     nav{position:sticky;top:0;z-index:40;background:rgba(9,10,14,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(216,171,93,.16)}
     .navin{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:850}.brand img{width:34px;height:34px;border-radius:10px}.back{font-size:14px;color:#abb2bd;font-weight:750}
-    header{padding:62px 0 42px}.eyebrow{color:var(--gold2);font-size:12px;font-weight:900;letter-spacing:.13em}.title{font-size:clamp(38px,7vw,58px);line-height:1.08;letter-spacing:-.045em;margin:10px 0 12px}.sub{color:var(--muted);margin:0;max-width:680px}
-    .latest{margin-top:34px;border:1px solid rgba(216,171,93,.34);border-radius:26px;padding:28px;background:linear-gradient(145deg,rgba(216,171,93,.10),rgba(239,54,86,.05)),#11151c}
-    .latestTop{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.version{font-size:42px;font-weight:930;letter-spacing:-.04em}.badge{display:inline-flex;padding:6px 10px;border:1px solid rgba(97,228,162,.28);background:rgba(97,228,162,.07);border-radius:999px;color:#8af0ba;font-size:11px;font-weight:850}
-    .notes{display:grid;gap:10px;margin-top:22px}.note{display:grid;grid-template-columns:82px 1fr;gap:12px;border-top:1px solid var(--line);padding-top:12px}.type{color:var(--gold2);font-size:12px;font-weight:900}.note div:last-child{color:#c5cbd5;font-size:14px}
-    .history{padding:10px 0 70px}.release{border-left:2px solid rgba(216,171,93,.24);padding:0 0 34px 24px;position:relative}.release::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:#d8ab5d;box-shadow:0 0 0 5px #090a0e}.release h2{font-size:25px;margin:0 0 4px}.release .meta{color:#7f8794;font-size:12px;margin-bottom:12px}.release ul{margin:0;padding-left:20px;color:#aeb5c1}.release li{margin:7px 0}
-    .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:13px;padding:12px 17px;font-weight:850;border:1px solid var(--line)}.primary{background:linear-gradient(135deg,#ef3656,#bd1535);border-color:transparent}.ghost{background:rgba(255,255,255,.03)}
-    footer{border-top:1px solid var(--line);padding:32px 0 54px;text-align:center;color:#747d8a;font-size:12px}
-    @media(max-width:600px){.latestTop{flex-direction:column}.note{grid-template-columns:1fr;gap:3px}.version{font-size:36px}}
+    header{padding:58px 0 34px}.eyebrow{color:var(--gold2);font-size:12px;font-weight:900;letter-spacing:.13em}.title{font-size:clamp(38px,7vw,58px);line-height:1.08;letter-spacing:-.045em;margin:10px 0 12px}.sub{color:var(--muted);margin:0;max-width:700px}
+    .latest{margin-top:30px;border:1px solid rgba(216,171,93,.34);border-radius:24px;padding:26px;background:linear-gradient(145deg,rgba(216,171,93,.10),rgba(239,54,86,.05)),#11151c}
+    .latestTop{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.version{font-size:42px;font-weight:930;letter-spacing:-.04em}.date{font-size:12px;color:#7e8795;margin-top:2px}.badge{display:inline-flex;padding:6px 10px;border:1px solid rgba(97,228,162,.28);background:rgba(97,228,162,.07);border-radius:999px;color:#8af0ba;font-size:11px;font-weight:850}
+    .latestNotes{margin:20px 0 0;padding-left:21px;color:#c5cbd5}.latestNotes li{margin:8px 0}
+    .history{padding:8px 0 70px}.release{border-left:2px solid rgba(216,171,93,.24);padding:0 0 30px 24px;position:relative}.release::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:#d8ab5d;box-shadow:0 0 0 5px #090a0e}.release h2{font-size:24px;margin:0 0 2px}.release .meta{color:#7f8794;font-size:12px;margin-bottom:9px}.release ul{margin:0;padding-left:20px;color:#aeb5c1}.release li{margin:6px 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:13px;padding:12px 17px;font-weight:850;border:1px solid var(--line)}.primary{background:linear-gradient(135deg,#ef3656,#bd1535);border-color:transparent}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+    footer{border-top:1px solid var(--line);padding:30px 0 54px;text-align:center;color:#747d8a;font-size:12px}
+    @media(max-width:600px){.latestTop{flex-direction:column}.version{font-size:36px}}
   </style>
 </head>
 <body>
@@ -31,75 +32,64 @@
 <header><div class="wrap">
   <div class="eyebrow">VERSION HISTORY</div>
   <h1 class="title">版本更新</h1>
-  <p class="sub">每個版本後面直接寫清楚新增、優化與修正內容。最新版會跟著線上版本資訊同步顯示。</p>
+  <p class="sub">從現在起，正式發佈的版本號與更新說明會自動同步到這一頁，並保留舊版本紀錄。</p>
 
   <div class="latest">
     <div class="latestTop">
-      <div><div class="badge">目前最新版</div><div class="version" id="latestVersion">v0.6.50</div></div>
+      <div><div class="badge">目前最新版</div><div class="version" id="latestVersion">載入中</div><div class="date" id="latestDate"></div></div>
       <a class="btn primary" href="download.html">下載最新版</a>
     </div>
-    <div class="notes">
-      <div class="note"><div class="type">新增</div><div>效益雷達：車單可顯示含接駕總公里、每公里營收與接駕占比。</div></div>
-      <div class="note"><div class="type">新增</div><div>可選填油價與平均油耗，估算油資與扣油後收入。</div></div>
-      <div class="note"><div class="type">新增</div><div>優先派單者關鍵字：命中指定發文人時加上標記並優先保留。</div></div>
-      <div class="note"><div class="type">優化</div><div>喊單模板可依群組自訂；MOMO 預設使用路名，其他群組預設使用行政區＋時間。</div></div>
-      <div class="note"><div class="type">優化</div><div>喊單文字與歷史紀錄改為保存完整實際送出的內容。</div></div>
-    </div>
-    <div class="actions"><a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">官方 LINE 詢問</a><a class="btn ghost" href="download.html">安裝／更新教學</a></div>
+    <ul class="latestNotes" id="latestNotes"><li>正在讀取更新內容…</li></ul>
+    <div class="actions"><a class="btn" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">官方 LINE 詢問</a><a class="btn" href="download.html">安裝／更新教學</a></div>
   </div>
 </div></header>
 
-<main class="history"><div class="wrap">
-  <article class="release">
-    <h2>v0.6.49</h2>
-    <div class="meta">車趟完成流程與 LINE 救援機制調整</div>
-    <ul>
-      <li>新增乘客上車／完成車趟流程。</li>
-      <li>完成車趟可保存實際公里、實收金額與備註。</li>
-      <li>歷史紀錄新增車趟階段與上下車時間資料。</li>
-      <li>簡化 LINE 通知監聽救援機制，減少不必要的自動重連循環。</li>
-    </ul>
-  </article>
-
-  <article class="release">
-    <h2>v0.6.48</h2>
-    <div class="meta">首頁 Scheme A 排版</div>
-    <ul>
-      <li>重新調整首頁功能選單與快速篩選順序。</li>
-      <li>保留完整 8 個功能入口，同時縮短選單高度。</li>
-      <li>快速篩選區改為更醒目的第一屏操作區。</li>
-      <li>減少不必要標題與留白，讓常用功能更快看到。</li>
-    </ul>
-  </article>
-
-  <article class="release">
-    <h2>v0.6.47</h2>
-    <div class="meta">快速篩選與提醒處理</div>
-    <ul>
-      <li>肥單、主群／免回金、順路、即時／預約、距離與金額排序移到首頁快速篩選區。</li>
-      <li>未讀私訊／@提醒新增「全部關閉」功能。</li>
-      <li>全部關閉只會設為已讀，不會刪除聊天紀錄與原文。</li>
-      <li>HTA 趟訊官方 Launcher 圖示同步更新。</li>
-    </ul>
-  </article>
-
-  <article class="release">
-    <h2>v0.6.46</h2>
-    <div class="meta">HTA 趟訊品牌正式導入</div>
-    <ul>
-      <li>App 對外名稱統一為 HTA 趟訊。</li>
-      <li>導入 HTA 趟訊正式品牌圖示與 Launcher icon。</li>
-      <li>保留既有套件識別，使用者可直接覆蓋更新。</li>
-    </ul>
-  </article>
-</div></main>
-
-<footer><div class="wrap">© 2026 HTA 趟訊 · <a href="./">官網首頁</a> · <a href="download.html">下載 App</a> · <a href="privacy.html">隱私權政策</a></div></footer>
+<main class="history"><div class="wrap" id="history"></div></main>
+<footer><div class="wrap">© 2026 HTA 趟訊 · <a href="./">官網首頁</a> · <a href="download.html">下載 App</a></div></footer>
 
 <script>
-fetch("update.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
-  if(d&&d.versionName) document.getElementById("latestVersion").textContent="v"+String(d.versionName).replace(/^v/i,"");
-}).catch(()=>{});
+const splitNotes = text => String(text||"")
+  .split(/[；;\n]+/)
+  .map(s=>s.trim())
+  .filter(Boolean);
+
+Promise.all([
+  fetch("update.json",{cache:"no-store"}).then(r=>r.ok?r.json():null),
+  fetch("changelog.json",{cache:"no-store"}).then(r=>r.ok?r.json():[])
+]).then(([update,history])=>{
+  history=Array.isArray(history)?history:[];
+  if(update&&update.versionName){
+    const v=String(update.versionName).replace(/^v/i,"");
+    const found=history.find(x=>String(x.version).replace(/^v/i,"")===v);
+    if(!found) history.unshift({version:v,date:"",notes:update.notes||""});
+    else if(update.notes) found.notes=update.notes;
+  }
+  history.sort((a,b)=>{
+    const pa=String(a.version||"0").split(".").map(Number), pb=String(b.version||"0").split(".").map(Number);
+    for(let i=0;i<Math.max(pa.length,pb.length);i++){const d=(pb[i]||0)-(pa[i]||0);if(d)return d}
+    return 0;
+  });
+
+  const latest=history[0]||{};
+  document.getElementById("latestVersion").textContent=latest.version?"v"+latest.version:"暫無版本";
+  document.getElementById("latestDate").textContent=latest.date||"";
+  const notes=splitNotes(latest.notes);
+  document.getElementById("latestNotes").innerHTML=(notes.length?notes:["目前沒有更新說明"]).map(n=>"<li>"+n+"</li>").join("");
+
+  document.getElementById("history").innerHTML=history.slice(1).map(item=>{
+    const ns=splitNotes(item.notes);
+    return '<article class="release"><h2>v'+item.version+'</h2><div class="meta">'+(item.date||"")+'</div><ul>'+
+      (ns.length?ns:["未提供更新說明"]).map(n=>"<li>"+n+"</li>").join("")+
+      '</ul></article>';
+  }).join("");
+}).catch(()=>{
+  document.getElementById("latestVersion").textContent="讀取失敗";
+  document.getElementById("latestNotes").innerHTML="<li>請稍後重新整理。</li>";
+});
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load",()=>navigator.serviceWorker.register("/service-worker.js").catch(()=>{}));
+}
 </script>
 </body>
 </html>
