@@ -80,7 +80,7 @@
     <a class="brand" href="#"><img class="logo" src="hta-tangxun-icon.webp" alt="HTA 趟訊"><span>HTA 趟訊</span></a>
     <div class="navlinks">
       <a href="#how">怎麼用</a><a href="#features">功能</a><a href="#pricing">方案</a><a href="#faq">FAQ</a>
-      <a class="btn primary" href="#trial">48 小時試用</a>
+      <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">48 小時試用</a>
     </div>
   </div>
 </nav>
@@ -92,7 +92,7 @@
       <h1>少刷群組。<br><span class="accent">先看值得看的單。</span></h1>
       <p class="lead">HTA 趟訊把 LINE 派車通知整理成更容易判斷的車單：接駕距離、行程公里、估價、即時／預約、肥單、順路與快速報時，集中在同一個畫面。</p>
       <div class="heroActions">
-        <a class="btn primary" href="#trial">免費試用 48 小時</a>
+        <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">免費試用 48 小時</a>
         <a class="btn ghost" href="https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-latest.apk">下載 Android 最新版</a>
       </div>
       <div class="micro"><span>不綁卡</span><span>不自動續費</span><span>可直接覆蓋更新</span></div>
@@ -197,7 +197,7 @@
         <div class="amount">599 <small>NT$ / 月</small></div>
         <div class="save">適合先短期使用</div>
         <ul><li>完整功能</li><li>單一授權裝置</li><li>App 內更新</li><li>問題回報支援</li></ul>
-        <a class="btn ghost" href="#trial" style="width:100%">開始 48 小時試用</a>
+        <a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener" style="width:100%">開始 48 小時試用</a>
       </div>
 
       <div class="price featured">
@@ -206,7 +206,7 @@
         <div class="amount">1,499 <small>NT$ / 90 天</small></div>
         <div class="save">平均約 NT$500 / 月</div>
         <ul><li>完整功能</li><li>比月繳 3 個月省 NT$298</li><li>單一授權裝置</li><li>App 內更新與支援</li></ul>
-        <a class="btn primary" href="#trial" style="width:100%">先試用，再決定</a>
+        <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener" style="width:100%">先試用，再決定</a>
       </div>
 
       <div class="price">
@@ -214,20 +214,19 @@
         <div class="amount">4,990 <small>NT$ / 年</small></div>
         <div class="save">平均約 NT$416 / 月</div>
         <ul><li>完整功能</li><li>適合長期固定跑車</li><li>單一授權裝置</li><li>全年更新與支援</li></ul>
-        <a class="btn ghost" href="#trial" style="width:100%">開始 48 小時試用</a>
+        <a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener" style="width:100%">開始 48 小時試用</a>
       </div>
     </div>
 
     <div class="trialBox" id="trial">
       <div class="kicker">48-HOUR TRIAL</div>
       <h3 style="font-size:27px;margin:5px 0 4px">免費試用 48 小時</h3>
-      <div style="color:#939aa8">輸入門號與 App 顯示的裝置碼，複製試用申請後傳給 HTA 趟訊官方客服，由亞城協助開通。</div>
-      <div class="trialForm">
-        <input id="phone" inputmode="tel" placeholder="09xxxxxxxx">
-        <input id="device" placeholder="裝置碼，例如 TA-XXXX-XXXX-XXXX">
-        <button class="btn primary" onclick="copyTrial()">複製試用申請</button>
+      <div style="color:#939aa8">加入 HTA 趟訊官方 LINE，傳送手機號碼與 App 顯示的裝置碼，由亞城協助開通試用與授權。</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+        <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">加入官方 LINE 申請試用</a>
+        <a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">LINE 諮詢／購買續費</a>
       </div>
-    </div>
+    </div></div>
   </div>
 </section>
 
@@ -249,17 +248,5 @@
   <div class="wrap footerGrid"><span>© 2026 HTA 趟訊</span><span>官方客服與授權協助：亞城 · Android 即時車趟輔助工具</span></div>
 </footer>
 
-<div class="toast" id="toast">已複製試用申請</div>
-<script>
-function copyTrial(){
-  const p=document.getElementById('phone').value.trim();
-  const d=document.getElementById('device').value.trim();
-  if(!p||!d){alert('請先輸入手機號碼與裝置碼');return}
-  const text='HTA 趟訊｜48 小時試用申請\n手機號碼：'+p+'\n裝置碼：'+d+'\n聯絡客服：亞城';
-  navigator.clipboard.writeText(text).then(()=>{
-    const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)
-  }).catch(()=>prompt('請複製以下內容：',text));
-}
-</script>
 </body>
 </html>
