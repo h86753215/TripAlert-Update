@@ -857,6 +857,13 @@
     .demoBullet{border-top:1px solid #252b35;padding-top:12px;color:#c5cad3;font-size:14px}
     .demoBullet b{color:#fff}
 
+    
+    .payFlow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+    .payStep{border:1px solid var(--line);border-radius:20px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015))}
+    .payStep .n{font-size:11px;color:var(--gold);font-weight:900;letter-spacing:.12em}
+    .payStep h3{font-size:18px;margin:12px 0 7px}.payStep p{margin:0;color:#939baa;font-size:13px}
+    .payNote{margin-top:14px;border:1px solid rgba(97,228,162,.16);background:rgba(97,228,162,.045);border-radius:16px;padding:14px 16px;color:#aeb7c3;font-size:13px}
+
     @media(max-width:980px){
       .heroGrid{grid-template-columns:1fr;gap:42px}
       .heroVisual{min-height:580px;max-width:600px;width:100%;margin:auto}
@@ -866,7 +873,7 @@
       .feature.large{grid-row:auto;grid-column:span 2;min-height:320px}
       .feature.wide{grid-column:span 2}
       .previewGrid{grid-template-columns:1fr}.demoWrap{grid-template-columns:1fr}
-      .priceGrid{grid-template-columns:1fr}
+      .priceGrid{grid-template-columns:1fr}.payFlow{grid-template-columns:1fr 1fr}
       .price.featured{transform:none}
       .trialBand{align-items:flex-start;flex-direction:column}.introOffer{grid-template-columns:1fr!important}
       .fitGrid{grid-template-columns:1fr}
@@ -893,7 +900,7 @@
       .brandCard{width:200px;right:0}
       .phone{width:86%;left:0}
       .phoneScreen{min-height:510px}
-      .strip{grid-template-columns:1fr}
+      .strip{grid-template-columns:1fr}.payFlow{grid-template-columns:1fr}
       .workflow{grid-template-columns:1fr}
       .bento{grid-template-columns:1fr}
       .feature.large,.feature.wide{grid-column:auto}
@@ -1285,6 +1292,24 @@
             <a class="btn ghost" href="TripAlert-latest.apk">先下載 APK</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    
+    <section class="section" id="payment">
+      <div class="wrap">
+        <div class="eyebrow">付款與開通</div>
+        <h2 class="title">先確認方案，再由官方 LINE 完成付款與授權。</h2>
+        <p class="sub">目前採人工客服確認，不在官網公開個人收款帳號。使用者確定購買後，由官方 LINE 提供當次付款方式與開通資訊。</p>
+
+        <div class="payFlow">
+          <div class="payStep"><div class="n">01 / CONTACT</div><h3>加入官方 LINE</h3><p>告知要購買的方案，以及手機號碼與裝置碼。</p></div>
+          <div class="payStep"><div class="n">02 / CONFIRM</div><h3>客服確認金額</h3><p>確認月繳、季繳、年繳或首月體驗價是否適用。</p></div>
+          <div class="payStep"><div class="n">03 / PAY</div><h3>提供付款方式</h3><p>由客服提供當次可用的付款方式；付款資訊不公開放在官網。</p></div>
+          <div class="payStep"><div class="n">04 / ACTIVATE</div><h3>完成授權開通</h3><p>核對付款後開通授權，使用者可直接在 App 內開始使用。</p></div>
+        </div>
+
+        <div class="payNote">付款、續費、退款與換機綁定皆以官方 LINE 對話紀錄為主要聯絡依據；請勿將付款資訊傳給非官方來源。</div>
       </div>
     </section>
 
