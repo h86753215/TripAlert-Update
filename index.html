@@ -991,7 +991,7 @@
           <div class="previewApp">
             <div class="previewHeader">
               <div class="previewBrand"><img src="hta-tangxun-icon.webp" alt=""><span>HTA 趟訊</span></div>
-              <span class="version">v0.6.46</span>
+              <span class="version currentVersion">最新版</span>
             </div>
             <div class="status">● 完整上線中 · 車單與提醒已啟動</div>
 
@@ -1172,5 +1172,15 @@
     <a class="btn ghost" href="TripAlert-latest.apk">下載 APK</a>
     <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">48 小時試用</a>
   </div>
+
+  <script>
+    fetch("update.json",{cache:"no-store"})
+      .then(r=>r.ok?r.json():null)
+      .then(d=>{
+        if(!d||!d.versionName)return;
+        document.querySelectorAll(".currentVersion").forEach(el=>el.textContent="v"+d.versionName);
+      })
+      .catch(()=>{});
+  </script>
 </body>
 </html>
