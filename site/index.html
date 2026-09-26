@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#07080b">
+  <meta name="theme-color" content="#07080b">\n  <link rel="icon" type="image/webp" href="hta-tangxun-icon.webp">
   <meta name="description" content="HTA 趟訊｜專為 Android 打造的 LINE 車趟輔助工具。整理車單、距離、估價、肥單、預約、順路與快速報時。官方客服與授權協助：亞城。">
   <title>HTA 趟訊｜即時車趟輔助工具</title>
   <style>
@@ -32,7 +32,7 @@
     nav{position:sticky;top:0;z-index:20;background:rgba(7,8,11,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:22px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
-    .logo{width:42px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--red),#8b102d);box-shadow:0 12px 30px rgba(255,56,84,.25);font-size:11px;letter-spacing:.05em}
+    .logo{width:42px;height:42px;border-radius:12px;display:block;object-fit:cover;box-shadow:0 10px 28px rgba(246,190,99,.18)} .downloadIcon{width:24px;height:24px;border-radius:7px;object-fit:cover}
     .navlinks{display:flex;align-items:center;gap:24px;color:#c9ced8;font-size:14px}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:14px;padding:13px 18px;font-weight:760;border:1px solid var(--line);transition:.2s ease;cursor:pointer}
     .btn:hover{transform:translateY(-2px);border-color:#3a4050}.btn.primary{background:linear-gradient(135deg,var(--red),var(--red2));border-color:transparent;box-shadow:0 14px 34px rgba(255,56,84,.24)}
@@ -76,7 +76,7 @@
 <body>
 <nav>
   <div class="wrap nav">
-    <a class="brand" href="#"><span class="logo">HTA</span><span>HTA 趟訊</span></a>
+    <a class="brand" href="#"><img class="logo" src="hta-tangxun-icon.webp" alt="HTA 趟訊"><span>HTA 趟訊</span></a>
     <div class="navlinks">
       <a href="#how">怎麼用</a><a href="#features">功能</a><a href="#pricing">方案</a><a href="#faq">FAQ</a>
       <a class="btn primary" href="#trial">48 小時試用</a>
@@ -92,7 +92,7 @@
       <p class="lead">HTA 趟訊把 LINE 派車通知整理成更容易判斷的車單：接駕距離、行程公里、估價、即時／預約、肥單、順路與快速報時，集中在同一個畫面。</p>
       <div class="heroActions">
         <a class="btn primary" href="#trial">免費試用 48 小時</a>
-        <a class="btn ghost" href="https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-latest.apk">下載 Android 最新版</a>
+        <a class="btn ghost" href="https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-latest.apk"><img class="downloadIcon" src="hta-tangxun-icon.webp" alt="">下載 Android 最新版</a>
       </div>
       <div class="micro"><span>不綁卡</span><span>不自動續費</span><span>可直接覆蓋更新</span></div>
     </div>
