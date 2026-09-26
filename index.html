@@ -85,7 +85,26 @@
     .faq{display:grid;gap:10px;margin-top:30px}.faq details{background:#0f1218;border:1px solid #252b35;border-radius:16px;padding:18px 20px}.faq summary{cursor:pointer;font-weight:760}.faq p{color:#9299a7;margin:10px 0 0}
     footer{padding:42px 0 64px;border-top:1px solid rgba(255,255,255,.06);color:#767d8b;font-size:13px}.footerGrid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:#171b23;border:1px solid #343a46;color:#fff;padding:11px 15px;border-radius:12px;transition:.2s;z-index:50;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
-    @media(max-width:900px){.navlinks a:not(.btn){display:none}.hero{padding-top:60px}.heroGrid{grid-template-columns:1fr;gap:42px}.device{max-width:390px}.grid3,.priceGrid{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.step:after{display:none}.showcase{grid-template-columns:1fr}.trialForm{grid-template-columns:1fr}.section{padding:72px 0}}
+
+    .previewGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:stretch;margin-top:36px}
+    .appshot{background:linear-gradient(180deg,#090b10,#06070a);border:1px solid #2c323e;border-radius:30px;padding:18px;box-shadow:0 28px 70px rgba(0,0,0,.38);overflow:hidden}
+    .appbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 2px 14px;border-bottom:1px solid #222833}
+    .appbarBrand{display:flex;align-items:center;gap:10px;font-weight:850}.appbarBrand img{width:34px;height:34px;border-radius:10px;object-fit:cover}
+    .versionTag{font-size:11px;color:#9ba2af;border:1px solid #303642;border-radius:999px;padding:5px 8px}
+    .statusLine{margin:14px 0 12px;background:#0d2a1d;border:1px solid #155d3c;color:#6cf2ad;border-radius:12px;padding:11px 12px;font-size:13px;font-weight:750}
+    .filterBox{border:1px solid #24384b;background:#0a0e13;border-radius:16px;padding:14px;margin-bottom:12px}
+    .filterTitle{font-size:11px;letter-spacing:.08em;color:#78d7ff;font-weight:800;margin-bottom:9px}
+    .filterBtns{display:flex;gap:7px;flex-wrap:wrap}.filterBtn{font-size:11px;border-radius:9px;padding:7px 9px;font-weight:760;border:1px solid currentColor;background:#090b10}
+    .fOrange{color:#ff7a3d}.fRed{color:#ff4d67}.fGold{color:#f5c35f}.fGreen{color:#56dfb6}.fBlue{color:#5fa8ff}.fPurple{color:#bd7cff}.fCyan{color:#4ed7df}
+    .tripCard{border:1px solid #2a303b;background:#10131a;border-radius:16px;padding:14px;margin-top:10px}
+    .tripCard.hot{border-color:#7a2435;background:linear-gradient(180deg,#171117,#10131a)}.tripHead{display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .tripType{font-size:10px;padding:5px 7px;border-radius:999px;background:#2b1219;color:#ff8395;font-weight:800}.tripMoney{font-size:19px;font-weight:900}
+    .tripRoute{margin-top:10px;font-size:13px;color:#d8dce4}.tripSub{font-size:11px;color:#858d9c;margin-top:3px}.tripActions{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}.actionChip{font-size:10px;padding:6px 8px;border-radius:999px;border:1px solid #303642;color:#aab1bd}
+    .previewCopy{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(145deg,#121620,#0d0f14);border:1px solid #282e39;border-radius:26px;padding:32px}
+    .previewCopy h3{font-size:30px;line-height:1.15;margin:10px 0 14px;letter-spacing:-.03em}.previewCopy p{color:#9ea5b2;margin:0 0 22px}
+    .previewChecks{display:grid;gap:11px}.previewCheck{display:flex;align-items:flex-start;gap:10px;padding-top:11px;border-top:1px solid #252a34;color:#c7ccd6;font-size:14px}.previewCheck b{color:#fff}
+
+    @media(max-width:900px){.navlinks a:not(.btn){display:none}.previewGrid{grid-template-columns:1fr}.hero{padding-top:60px}.heroGrid{grid-template-columns:1fr;gap:42px}.device{max-width:390px}.grid3,.priceGrid{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.step:after{display:none}.showcase{grid-template-columns:1fr}.trialForm{grid-template-columns:1fr}.section{padding:72px 0}}
     @media(max-width:560px){.wrap{width:min(var(--max),calc(100% - 24px))}.nav{height:64px}.brand span:last-child{font-size:15px}.hero{padding:52px 0 56px}h1{font-size:48px}.lead{font-size:16px}.heroActions .btn{width:100%}.micro{gap:8px 14px}.screen{min-height:610px}.flow{grid-template-columns:1fr}.grid3{margin-top:26px}.title{font-size:36px}.amount{font-size:44px}}
   </style>
 </head>
@@ -195,6 +214,62 @@
           <div class="miniRow"><span>問題回報</span><b>可附圖片／影片</b></div>
           <div class="miniRow"><span>管理員回覆</span><b>App 內查看</b></div>
           <div class="miniRow"><span>目前平台</span><b>Android</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="preview">
+  <div class="wrap">
+    <div class="kicker">APP PREVIEW · v0.6.46</div>
+    <h2 class="title">打開 App，先看到能幫你做決定的資訊。</h2>
+    <p class="sub">這裡用目前 HTA 趟訊的操作邏輯做介面預覽：上線狀態、篩選、肥單、距離、金額、預約與順路集中在同一個工作區。</p>
+
+    <div class="previewGrid">
+      <div class="appshot">
+        <div class="appbar">
+          <div class="appbarBrand"><img src="hta-tangxun-icon.webp" alt="HTA 趟訊"><span>HTA 趟訊</span></div>
+          <span class="versionTag">v0.6.46</span>
+        </div>
+        <div class="statusLine">● 完整上線中 · 車單與提醒已啟動</div>
+
+        <div class="filterBox">
+          <div class="filterTitle">顯示條件</div>
+          <div class="filterBtns">
+            <span class="filterBtn fOrange">全部</span><span class="filterBtn fRed">肥單</span><span class="filterBtn fGold">主群／免回金</span><span class="filterBtn fGreen">順路</span>
+          </div>
+        </div>
+        <div class="filterBox">
+          <div class="filterTitle">時間類型 · 排序方式</div>
+          <div class="filterBtns">
+            <span class="filterBtn fPurple">即時</span><span class="filterBtn fBlue">預約</span><span class="filterBtn fCyan">距離近→遠</span><span class="filterBtn fGold">金額高→低</span>
+          </div>
+        </div>
+
+        <div class="tripCard hot">
+          <div class="tripHead"><span class="tripType">肥單 · 即時</span><span class="tripMoney">$1,260</span></div>
+          <div class="tripRoute"><b>桃園區</b> → 板橋區<div class="tripSub">接駕 2.8 km · 約 7 分 · 行程約 31 km</div></div>
+          <div class="tripActions"><span class="actionChip">10 分</span><span class="actionChip">導航</span><span class="actionChip">記帳</span></div>
+        </div>
+
+        <div class="tripCard">
+          <div class="tripHead"><span class="tripType" style="background:#121a2b;color:#8eb5ff">預約</span><span class="tripMoney">$780</span></div>
+          <div class="tripRoute"><b>中壢區</b> → 松山區<div class="tripSub">23:40 · 接駕約 12 分</div></div>
+          <div class="tripActions"><span class="actionChip">準</span><span class="actionChip">晚 5</span><span class="actionChip">晚 10</span></div>
+        </div>
+      </div>
+
+      <div class="previewCopy">
+        <div class="kicker">LESS SWITCHING</div>
+        <h3>少切畫面，<br>把判斷留在同一頁。</h3>
+        <p>不是把 LINE 搬進另一個 App，而是把「現在要不要接」真正會看的資訊先整理好。</p>
+        <div class="previewChecks">
+          <div class="previewCheck"><span>01</span><div><b>篩選先做掉</b><br>肥單、即時、預約、順路、距離與金額依跑法切換。</div></div>
+          <div class="previewCheck"><span>02</span><div><b>距離拆清楚</b><br>接駕距離與實際行程公里分開，不混在一起看。</div></div>
+          <div class="previewCheck"><span>03</span><div><b>看到單就能往下做</b><br>報時、Google Maps 導航與完成後記帳，都從車單流程接續。</div></div>
+          <div class="previewCheck"><span>04</span><div><b>持續更新</b><br>目前官網與正式 APK 已同步至 HTA 趟訊品牌。</div></div>
         </div>
       </div>
     </div>
