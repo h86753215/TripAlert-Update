@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#07080b">
+  <meta name="theme-color" content="#08090d">
+  <meta name="author" content="亞城">
   <meta name="application-name" content="HTA 趟訊">
   <meta name="robots" content="index,follow">
+  <meta name="description" content="HTA 趟訊｜專為 Android 打造的 LINE 車趟輔助工具。自動整理車單、接駕距離、行程公里、估價、肥單、預約、順路、導航與快速報時。48 小時免費試用。">
+  <link rel="canonical" href="https://htaxun.com/">
   <link rel="icon" type="image/webp" href="hta-tangxun-icon.webp">
   <link rel="apple-touch-icon" href="hta-tangxun-icon.webp">
-  <meta name="author" content="亞城">
-  <meta name="description" content="HTA 趟訊｜專為 Android 打造的 LINE 車趟輔助工具。整理車單、距離、估價、肥單、預約、順路與快速報時。官方客服與授權協助：亞城。">
-  <link rel="canonical" href="https://htaxun.com/">
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="HTA 趟訊">
   <meta property="og:title" content="HTA 趟訊｜少刷群組，先看值得看的單">
@@ -21,337 +22,1155 @@
   <meta name="twitter:title" content="HTA 趟訊｜少刷群組，先看值得看的單">
   <meta name="twitter:description" content="Android LINE 車趟輔助工具｜48 小時免費試用。">
   <meta name="twitter:image" content="https://htaxun.com/hta-tangxun-icon.webp">
-  <title>HTA 趟訊｜即時車趟輔助工具</title>
+
+  <title>HTA 趟訊｜Android LINE 車趟輔助工具</title>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"HTA 趟訊",
+    "operatingSystem":"Android 9+",
+    "applicationCategory":"BusinessApplication",
+    "description":"LINE 車趟輔助工具，提供車單解析、距離與估價、肥單、預約、順路、導航、報時與歷史紀錄。",
+    "url":"https://htaxun.com/",
+    "offers":[
+      {"@type":"Offer","price":"599","priceCurrency":"TWD","name":"月繳"},
+      {"@type":"Offer","price":"1499","priceCurrency":"TWD","name":"季繳 90 天"},
+      {"@type":"Offer","price":"4990","priceCurrency":"TWD","name":"年繳"}
+    ]
+  }
+  </script>
+
   <style>
     :root{
-      --bg:#07080b;--bg2:#0b0d12;--panel:#10131a;--panel2:#151923;
-      --text:#f6f7fb;--muted:#979eac;--line:#252a35;
-      --red:#ff3854;--red2:#c91436;--green:#5de39a;--amber:#f6be63;
-      --max:1160px;--shadow:0 30px 90px rgba(0,0,0,.45);
+      --bg:#08090d;
+      --bg-soft:#0d1016;
+      --panel:#11151d;
+      --panel-2:#151a24;
+      --panel-3:#0c0f14;
+      --text:#f7f8fb;
+      --muted:#9da5b3;
+      --muted-2:#727b8a;
+      --line:rgba(255,255,255,.08);
+      --gold:#d8ab5d;
+      --gold-2:#f1d79a;
+      --red:#ff405c;
+      --red-2:#c9173a;
+      --green:#61e4a2;
+      --blue:#6aa8ff;
+      --cyan:#5bd9e4;
+      --purple:#b17bff;
+      --shadow:0 28px 90px rgba(0,0,0,.48);
+      --max:1180px;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      margin:0;color:var(--text);background:
-      radial-gradient(900px 560px at 85% -10%,rgba(255,56,84,.16),transparent 60%),
-      radial-gradient(760px 520px at -10% 38%,rgba(72,93,255,.08),transparent 60%),
-      var(--bg);
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 88% -10%,rgba(255,64,92,.16),transparent 62%),
+        radial-gradient(800px 500px at 8% 10%,rgba(216,171,93,.11),transparent 66%),
+        linear-gradient(180deg,#07080b 0%,#090b10 48%,#07080b 100%);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
-      line-height:1.65;overflow-x:hidden
+      line-height:1.65;
+      overflow-x:hidden;
     }
-    body:before{
-      content:"";position:fixed;inset:0;pointer-events:none;opacity:.04;
-      background-image:linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px);
-      background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 72%)
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      opacity:.04;
+      background-image:
+        linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+      background-size:72px 72px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent 80%);
     }
-    a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
-    nav{position:sticky;top:0;z-index:20;background:rgba(7,8,11,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
-    .logo{width:40px;height:40px;border-radius:12px;object-fit:cover;display:block;box-shadow:0 12px 30px rgba(183,133,54,.24)}
-    .navlinks{display:flex;align-items:center;gap:24px;color:#c9ced8;font-size:14px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:14px;padding:13px 18px;font-weight:760;border:1px solid var(--line);transition:.2s ease;cursor:pointer}
-    .btn:hover{transform:translateY(-2px);border-color:#3a4050}.btn.primary{background:linear-gradient(135deg,var(--red),var(--red2));border-color:transparent;box-shadow:0 14px 34px rgba(255,56,84,.24)}
-    .btn.ghost{background:rgba(255,255,255,.03)}
-    .hero{padding:94px 0 72px}.heroGrid{display:grid;grid-template-columns:1.06fr .94fr;gap:62px;align-items:center}
-    .eyebrow{display:inline-flex;gap:10px;align-items:center;padding:8px 11px;border:1px solid rgba(255,255,255,.09);border-radius:999px;background:rgba(255,255,255,.035);color:#cfd4df;font-size:13px}
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 18px var(--green)}
-    h1{font-size:clamp(48px,6.7vw,86px);line-height:1.02;margin:24px 0 22px;letter-spacing:-.055em}
-    h1 .accent{background:linear-gradient(90deg,#fff 10%,#ff7a8e 65%,#ff3854);-webkit-background-clip:text;color:transparent}
-    .lead{font-size:19px;color:#b4bac7;max-width:650px;margin:0 0 28px}
-    .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 25px}
-    .micro{display:flex;gap:22px;flex-wrap:wrap;color:#858c9a;font-size:13px}.micro span:before{content:"";display:inline-block;width:5px;height:5px;background:#5b6270;border-radius:50%;margin:0 8px 2px 0}
-    .device{position:relative;max-width:430px;margin:auto}
-    .glow{position:absolute;inset:11% -10% 5%;background:radial-gradient(circle,rgba(255,56,84,.25),transparent 62%);filter:blur(36px)}
-    .phone{position:relative;border:1px solid #303541;background:#0c0e13;border-radius:38px;padding:13px;box-shadow:var(--shadow);transform:rotate(1.5deg)}
-    .screen{min-height:700px;border-radius:29px;overflow:hidden;background:linear-gradient(180deg,#0c0f14,#090b0f);padding:20px}
-    .topline{display:flex;justify-content:space-between;align-items:center;color:#9aa1ae;font-size:12px;margin-bottom:20px}
-    .appTitle{font-size:23px;font-weight:850;letter-spacing:-.02em}.online{color:var(--green);font-size:12px}
-    .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:18px 0}.tab{padding:10px 6px;text-align:center;border:1px solid #272c36;border-radius:10px;color:#959ca9;font-size:11px}.tab.on{border-color:#7e1c31;background:#2a1119;color:#fff}
-    .order{border:1px solid #292e39;background:linear-gradient(180deg,#12151c,#0f1218);border-radius:18px;padding:16px;margin-top:11px;box-shadow:0 16px 34px rgba(0,0,0,.2)}
-    .order.hot{border-color:rgba(255,56,84,.55);box-shadow:0 0 0 1px rgba(255,56,84,.08),0 18px 42px rgba(0,0,0,.24)}
-    .orderTop{display:flex;justify-content:space-between;gap:10px;align-items:center}.badge{font-size:11px;font-weight:800;padding:6px 9px;border-radius:999px;background:#2a1119;color:#ff7d91}.money{font-size:19px;font-weight:900}
-    .route{margin-top:13px;display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14px}.route .muted{color:#88909e}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.pill{font-size:11px;color:#aeb4c0;border:1px solid #2a2f39;border-radius:999px;padding:6px 9px;background:#11141a}
-    .section{padding:92px 0;border-top:1px solid rgba(255,255,255,.055)}
-    .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#747b88;font-weight:800}.title{font-size:clamp(34px,4.5vw,56px);letter-spacing:-.04em;line-height:1.08;margin:10px 0 18px}
-    .sub{max-width:720px;color:#a8aebb;font-size:17px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}.card{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.07);border-radius:22px;padding:26px;min-height:210px}
-    .num{font-size:12px;color:#666e7d;font-weight:800;letter-spacing:.08em}.card h3{font-size:20px;margin:17px 0 9px}.card p{color:#949baa;margin:0;font-size:14px}
-    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:34px}.step{position:relative;padding:22px 18px;background:#0f1218;border:1px solid #242a34;border-radius:18px}.step b{display:block;margin:10px 0 6px}.step span{color:#8f96a4;font-size:13px}.step:after{content:"";position:absolute;right:-7px;top:50%;width:12px;height:1px;background:#3c424f}.step:last-child:after{display:none}
-    .showcase{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}.wide{background:linear-gradient(145deg,#141822,#0d0f14);border:1px solid #282e39;border-radius:26px;padding:30px;min-height:300px;position:relative;overflow:hidden}.wide:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,56,84,.08);filter:blur(15px);right:-80px;top:-60px}
-    .metric{font-size:46px;font-weight:900;letter-spacing:-.045em;margin:12px 0 0}.caption{color:#8e95a2;font-size:14px}.miniList{display:grid;gap:10px;margin-top:24px}.miniRow{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid #252a34;color:#b9bfca;font-size:14px}
-    .priceGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}.price{position:relative;border:1px solid #2a303b;border-radius:24px;padding:28px;background:#0f1218}.price.featured{border-color:rgba(255,56,84,.7);background:linear-gradient(180deg,rgba(255,56,84,.085),#0f1218);box-shadow:0 20px 60px rgba(255,56,84,.08)}.recommend{position:absolute;right:18px;top:18px;font-size:11px;color:#ff94a4;border:1px solid rgba(255,56,84,.3);padding:5px 8px;border-radius:999px}
-    .priceName{font-weight:800}.amount{font-size:49px;font-weight:920;letter-spacing:-.05em;margin:20px 0 2px}.amount small{font-size:14px;color:#8e95a2;font-weight:600;letter-spacing:0}.save{font-size:13px;color:var(--green)}.price ul{padding:0;list-style:none;margin:24px 0;display:grid;gap:10px;color:#aeb4c0;font-size:14px}.price li:before{content:"—";color:#626a78;margin-right:8px}
-    .trialBox{margin-top:24px;background:linear-gradient(135deg,#181c25,#0f1218);border:1px solid #2b313d;border-radius:24px;padding:24px}.trialForm{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-top:16px}.trialForm input{width:100%;border:1px solid #303642;background:#090b10;color:#fff;border-radius:13px;padding:14px 15px;outline:none}.trialForm input:focus{border-color:#5f6675}
-    .faq{display:grid;gap:10px;margin-top:30px}.faq details{background:#0f1218;border:1px solid #252b35;border-radius:16px;padding:18px 20px}.faq summary{cursor:pointer;font-weight:760}.faq p{color:#9299a7;margin:10px 0 0}
-    footer{padding:42px 0 64px;border-top:1px solid rgba(255,255,255,.06);color:#767d8b;font-size:13px}.footerGrid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:#171b23;border:1px solid #343a46;color:#fff;padding:11px 15px;border-radius:12px;transition:.2s;z-index:50;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
 
-    .previewGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:stretch;margin-top:36px}
-    .appshot{background:linear-gradient(180deg,#090b10,#06070a);border:1px solid #2c323e;border-radius:30px;padding:18px;box-shadow:0 28px 70px rgba(0,0,0,.38);overflow:hidden}
-    .appbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 2px 14px;border-bottom:1px solid #222833}
-    .appbarBrand{display:flex;align-items:center;gap:10px;font-weight:850}.appbarBrand img{width:34px;height:34px;border-radius:10px;object-fit:cover}
-    .versionTag{font-size:11px;color:#9ba2af;border:1px solid #303642;border-radius:999px;padding:5px 8px}
-    .statusLine{margin:14px 0 12px;background:#0d2a1d;border:1px solid #155d3c;color:#6cf2ad;border-radius:12px;padding:11px 12px;font-size:13px;font-weight:750}
-    .filterBox{border:1px solid #24384b;background:#0a0e13;border-radius:16px;padding:14px;margin-bottom:12px}
-    .filterTitle{font-size:11px;letter-spacing:.08em;color:#78d7ff;font-weight:800;margin-bottom:9px}
-    .filterBtns{display:flex;gap:7px;flex-wrap:wrap}.filterBtn{font-size:11px;border-radius:9px;padding:7px 9px;font-weight:760;border:1px solid currentColor;background:#090b10}
-    .fOrange{color:#ff7a3d}.fRed{color:#ff4d67}.fGold{color:#f5c35f}.fGreen{color:#56dfb6}.fBlue{color:#5fa8ff}.fPurple{color:#bd7cff}.fCyan{color:#4ed7df}
-    .tripCard{border:1px solid #2a303b;background:#10131a;border-radius:16px;padding:14px;margin-top:10px}
-    .tripCard.hot{border-color:#7a2435;background:linear-gradient(180deg,#171117,#10131a)}.tripHead{display:flex;justify-content:space-between;gap:10px;align-items:center}
-    .tripType{font-size:10px;padding:5px 7px;border-radius:999px;background:#2b1219;color:#ff8395;font-weight:800}.tripMoney{font-size:19px;font-weight:900}
-    .tripRoute{margin-top:10px;font-size:13px;color:#d8dce4}.tripSub{font-size:11px;color:#858d9c;margin-top:3px}.tripActions{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}.actionChip{font-size:10px;padding:6px 8px;border-radius:999px;border:1px solid #303642;color:#aab1bd}
-    .previewCopy{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(145deg,#121620,#0d0f14);border:1px solid #282e39;border-radius:26px;padding:32px}
-    .previewCopy h3{font-size:30px;line-height:1.15;margin:10px 0 14px;letter-spacing:-.03em}.previewCopy p{color:#9ea5b2;margin:0 0 22px}
-    .previewChecks{display:grid;gap:11px}.previewCheck{display:flex;align-items:flex-start;gap:10px;padding-top:11px;border-top:1px solid #252a34;color:#c7ccd6;font-size:14px}.previewCheck b{color:#fff}
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      opacity:.14;
+      background:radial-gradient(circle at center,transparent 0 40%,rgba(0,0,0,.5) 100%);
+    }
 
-    @media(max-width:900px){.navlinks a:not(.btn){display:none}.previewGrid{grid-template-columns:1fr}.hero{padding-top:60px}.heroGrid{grid-template-columns:1fr;gap:42px}.device{max-width:390px}.grid3,.priceGrid{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.step:after{display:none}.showcase{grid-template-columns:1fr}.trialForm{grid-template-columns:1fr}.section{padding:72px 0}}
-    @media(max-width:560px){.wrap{width:min(var(--max),calc(100% - 24px))}.nav{height:64px}.brand span:last-child{font-size:15px}.hero{padding:52px 0 56px}h1{font-size:48px}.lead{font-size:16px}.heroActions .btn{width:100%}.micro{gap:8px 14px}.screen{min-height:610px}.flow{grid-template-columns:1fr}.grid3{margin-top:26px}.title{font-size:36px}.amount{font-size:44px}}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+    .section{padding:100px 0;border-top:1px solid rgba(255,255,255,.055)}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      font-size:12px;
+      font-weight:850;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--gold-2);
+    }
+    .eyebrow::before{
+      content:"";
+      width:26px;
+      height:1px;
+      background:linear-gradient(90deg,var(--gold),transparent);
+    }
+    .title{
+      font-size:clamp(34px,4.6vw,58px);
+      line-height:1.08;
+      letter-spacing:-.045em;
+      margin:12px 0 18px;
+    }
+    .sub{
+      max-width:760px;
+      color:#abb2bf;
+      font-size:17px;
+      margin:0;
+    }
+
+    .topnote{
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(90deg,rgba(216,171,93,.08),rgba(255,64,92,.08));
+      color:#c9ced7;
+      font-size:12px;
+    }
+    .topnote .wrap{
+      min-height:34px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      text-align:center;
+    }
+    .topnote b{color:#fff}
+    .spark{color:var(--gold)}
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(8,9,13,.76);
+      backdrop-filter:blur(20px) saturate(140%);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .nav{
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:880;
+      letter-spacing:-.02em;
+      flex-shrink:0;
+    }
+    .brand img{
+      width:42px;
+      height:42px;
+      border-radius:13px;
+      object-fit:cover;
+      box-shadow:0 10px 30px rgba(216,171,93,.2);
+    }
+    .brand small{
+      display:block;
+      font-size:10px;
+      line-height:1.1;
+      color:#7f8795;
+      letter-spacing:.08em;
+      font-weight:700;
+      margin-top:2px;
+    }
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      color:#c9ced8;
+      font-size:14px;
+    }
+    .navlinks>a:not(.btn){transition:.2s}
+    .navlinks>a:not(.btn):hover{color:#fff}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border-radius:14px;
+      padding:13px 18px;
+      font-weight:820;
+      border:1px solid var(--line);
+      background:transparent;
+      cursor:pointer;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.18)}
+    .btn.primary{
+      border-color:transparent;
+      background:linear-gradient(135deg,var(--red),var(--red-2));
+      box-shadow:0 14px 38px rgba(255,64,92,.22);
+    }
+    .btn.gold{
+      color:#16120b;
+      border-color:transparent;
+      background:linear-gradient(135deg,#f3d898,#c99949);
+      box-shadow:0 14px 38px rgba(216,171,93,.16);
+    }
+    .btn.ghost{background:rgba(255,255,255,.035)}
+    .btn.line{border-color:rgba(97,228,162,.22);background:rgba(97,228,162,.06);color:#baf7d5}
+
+    .hero{padding:78px 0 86px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns:1.04fr .96fr;
+      gap:56px;
+      align-items:center;
+    }
+    .heroBadge{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:999px;
+      background:rgba(255,255,255,.035);
+      color:#cbd1dc;
+      font-size:13px;
+    }
+    .heroBadge .live{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 16px var(--green);
+    }
+    h1{
+      font-size:clamp(52px,7vw,86px);
+      line-height:1.01;
+      letter-spacing:-.058em;
+      margin:24px 0 22px;
+    }
+    h1 .accent{
+      background:linear-gradient(90deg,#fff 5%,#f3d79b 42%,#ff7084 82%,#ff405c);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+    .lead{
+      max-width:670px;
+      color:#b4bbc8;
+      font-size:19px;
+      margin:0;
+    }
+    .heroActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:11px;
+      margin:30px 0 22px;
+    }
+    .heroProof{
+      display:flex;
+      flex-wrap:wrap;
+      gap:11px;
+      color:#8e96a3;
+      font-size:12px;
+    }
+    .proof{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      padding:7px 9px;
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:999px;
+      background:rgba(255,255,255,.025);
+    }
+    .proof::before{content:"✓";color:var(--green);font-weight:900}
+
+    .heroVisual{position:relative;min-height:600px}
+    .heroGlow{
+      position:absolute;
+      width:500px;
+      height:500px;
+      right:-80px;
+      top:30px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(255,64,92,.18),rgba(216,171,93,.08) 38%,transparent 70%);
+      filter:blur(20px);
+    }
+    .brandCard{
+      position:absolute;
+      top:0;
+      right:18px;
+      width:260px;
+      border-radius:28px;
+      padding:16px;
+      background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow:var(--shadow);
+      transform:rotate(3deg);
+      backdrop-filter:blur(12px);
+    }
+    .brandCard img{
+      display:block;
+      width:100%;
+      border-radius:22px;
+    }
+    .brandCard .cap{
+      padding:12px 4px 2px;
+      color:#aeb5c0;
+      font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .phone{
+      position:absolute;
+      left:8px;
+      bottom:0;
+      width:min(360px,82%);
+      border-radius:36px;
+      padding:12px;
+      border:1px solid #303641;
+      background:#0a0c10;
+      box-shadow:0 36px 100px rgba(0,0,0,.55);
+      transform:rotate(-2.2deg);
+    }
+    .phoneScreen{
+      min-height:600px;
+      border-radius:27px;
+      padding:18px;
+      background:
+        radial-gradient(460px 260px at 50% -20%,rgba(255,64,92,.11),transparent 70%),
+        linear-gradient(180deg,#0d1016,#080a0e);
+      overflow:hidden;
+    }
+    .phoneTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      color:#8f97a4;
+      font-size:11px;
+      margin-bottom:14px;
+    }
+    .phoneBrand{display:flex;align-items:center;gap:8px;color:#fff;font-weight:850}
+    .phoneBrand img{width:29px;height:29px;border-radius:9px}
+    .online{color:var(--green)}
+    .filterPanel{
+      border:1px solid #24384b;
+      border-radius:15px;
+      background:#090d12;
+      padding:12px;
+      margin:10px 0;
+    }
+    .filterTitle{
+      color:#76d7ff;
+      font-size:10px;
+      font-weight:850;
+      letter-spacing:.06em;
+      margin-bottom:8px;
+    }
+    .filterRow{display:flex;gap:6px;flex-wrap:wrap}
+    .fbtn{
+      font-size:10px;
+      padding:6px 8px;
+      border-radius:8px;
+      font-weight:800;
+      border:1px solid currentColor;
+      background:#080a0e;
+    }
+    .orange{color:#ff8c46}.red{color:#ff5a70}.goldc{color:#f1c96d}.green{color:#5ae0b8}.blue{color:#71aaff}.purple{color:#bd82ff}.cyan{color:#63dbe4}
+    .ride{
+      border:1px solid #292f3a;
+      border-radius:16px;
+      background:linear-gradient(180deg,#121620,#0e1117);
+      padding:13px;
+      margin-top:9px;
+    }
+    .ride.hot{border-color:#7a2940;background:linear-gradient(180deg,#1a1117,#101318)}
+    .rideHead{display:flex;align-items:center;justify-content:space-between;gap:9px}
+    .tag{font-size:10px;font-weight:850;padding:5px 7px;border-radius:999px;background:#2c1119;color:#ff8496}
+    .money{font-size:18px;font-weight:900}
+    .route{margin-top:9px;color:#d7dbe3;font-size:13px}
+    .route small{display:block;color:#858d9a;margin-top:2px}
+    .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+    .chip{font-size:9px;padding:5px 7px;border-radius:999px;border:1px solid #303641;color:#aab1bc}
+
+    .strip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:44px;
+    }
+    .stripItem{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px 19px;
+      background:rgba(255,255,255,.025);
+    }
+    .stripItem b{display:block;font-size:18px;margin-bottom:4px}
+    .stripItem span{color:#8f97a4;font-size:12px}
+
+    .workflow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:36px;
+    }
+    .flowCard{
+      position:relative;
+      min-height:205px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:24px;
+      background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+      overflow:hidden;
+    }
+    .flowCard::after{
+      content:"";
+      position:absolute;
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      right:-60px;
+      bottom:-70px;
+      background:radial-gradient(circle,rgba(255,64,92,.09),transparent 70%);
+    }
+    .flowNo{
+      color:var(--gold);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.12em;
+    }
+    .flowCard h3{font-size:20px;margin:17px 0 8px}
+    .flowCard p{color:#939baa;font-size:14px;margin:0}
+
+    .bento{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:14px;
+      margin-top:36px;
+    }
+    .feature{
+      position:relative;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:26px;
+      background:linear-gradient(145deg,#121720,#0d1015);
+      min-height:230px;
+      overflow:hidden;
+    }
+    .feature.large{grid-row:span 2;min-height:474px}
+    .feature.wide{grid-column:span 2}
+    .feature::before{
+      content:"";
+      position:absolute;
+      width:190px;
+      height:190px;
+      border-radius:50%;
+      right:-80px;
+      top:-80px;
+      background:radial-gradient(circle,rgba(216,171,93,.11),transparent 70%);
+    }
+    .featureIcon{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:13px;
+      background:rgba(216,171,93,.08);
+      border:1px solid rgba(216,171,93,.18);
+      color:var(--gold-2);
+      font-weight:900;
+    }
+    .feature h3{font-size:21px;margin:18px 0 9px}
+    .feature p{color:#969eab;font-size:14px;margin:0}
+    .bigMetric{
+      font-size:52px;
+      font-weight:930;
+      letter-spacing:-.05em;
+      margin:26px 0 2px;
+      background:linear-gradient(90deg,#fff,#e7bd6e);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+    .miniStack{display:grid;gap:9px;margin-top:28px}
+    .miniRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border-top:1px solid #252b35;
+      padding-top:11px;
+      color:#b9c0ca;
+      font-size:13px;
+    }
+
+    .previewGrid{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:18px;
+      margin-top:36px;
+      align-items:stretch;
+    }
+    .previewApp{
+      border:1px solid #2a303b;
+      border-radius:28px;
+      padding:20px;
+      background:linear-gradient(180deg,#0d1016,#090b0f);
+      box-shadow:var(--shadow);
+    }
+    .previewHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:15px;
+    }
+    .previewBrand{display:flex;align-items:center;gap:10px;font-weight:850}
+    .previewBrand img{width:38px;height:38px;border-radius:11px}
+    .version{font-size:11px;color:#9ba2af;border:1px solid #303641;border-radius:999px;padding:5px 8px}
+    .status{
+      border:1px solid #17573b;
+      background:#0d281c;
+      color:#68e7a8;
+      border-radius:13px;
+      padding:11px 12px;
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:11px;
+    }
+    .previewInfo{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:34px;
+      background:
+        radial-gradient(360px 260px at 100% 0%,rgba(255,64,92,.1),transparent 70%),
+        linear-gradient(145deg,#151a24,#0d1015);
+    }
+    .previewInfo h3{font-size:34px;line-height:1.15;letter-spacing:-.035em;margin:12px 0 14px}
+    .previewInfo p{color:#9ca4b1;margin:0 0 22px}
+    .checks{display:grid;gap:10px}
+    .check{
+      display:grid;
+      grid-template-columns:28px 1fr;
+      gap:10px;
+      border-top:1px solid #252a34;
+      padding-top:11px;
+      color:#c5cad3;
+      font-size:14px;
+    }
+    .check span{color:var(--gold);font-weight:900}
+    .check b{color:#fff}
+
+    .priceGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:38px;
+    }
+    .price{
+      position:relative;
+      border:1px solid #2a303b;
+      border-radius:26px;
+      padding:28px;
+      background:#101319;
+    }
+    .price.featured{
+      border-color:rgba(216,171,93,.48);
+      background:linear-gradient(180deg,rgba(216,171,93,.08),#101319 38%);
+      box-shadow:0 24px 70px rgba(216,171,93,.07);
+      transform:translateY(-7px);
+    }
+    .recommend{
+      position:absolute;
+      right:18px;
+      top:18px;
+      color:#f2d28f;
+      border:1px solid rgba(216,171,93,.26);
+      background:rgba(216,171,93,.08);
+      padding:5px 8px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:850;
+    }
+    .priceName{font-weight:850}
+    .amount{
+      font-size:50px;
+      font-weight:930;
+      letter-spacing:-.055em;
+      margin:20px 0 0;
+    }
+    .amount small{
+      font-size:13px;
+      font-weight:650;
+      color:#8f97a4;
+      letter-spacing:0;
+    }
+    .save{font-size:12px;color:var(--green);margin-top:2px}
+    .price ul{
+      list-style:none;
+      padding:0;
+      margin:24px 0;
+      display:grid;
+      gap:10px;
+      color:#aeb5c0;
+      font-size:13px;
+    }
+    .price li::before{content:"✓";color:var(--gold);margin-right:8px;font-weight:900}
+
+    .trialBand{
+      margin-top:24px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:26px;
+      padding:28px;
+      background:
+        linear-gradient(135deg,rgba(255,64,92,.07),rgba(216,171,93,.06)),
+        #101319;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .trialBand h3{margin:4px 0 4px;font-size:26px}
+    .trialBand p{margin:0;color:#959daa}
+
+    .fitGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:36px;
+    }
+    .fit{
+      border:1px solid var(--line);
+      border-radius:23px;
+      padding:25px;
+      background:rgba(255,255,255,.025);
+    }
+    .fit h3{margin:0 0 13px;font-size:20px}
+    .fit ul{margin:0;padding-left:20px;color:#a8afbc}
+    .fit li{margin:8px 0}
+    .fit.good{border-color:rgba(97,228,162,.18)}
+    .fit.bad{border-color:rgba(255,107,127,.16)}
+
+    .faq{display:grid;gap:10px;margin-top:30px}
+    .faq details{
+      border:1px solid var(--line);
+      border-radius:17px;
+      padding:18px 20px;
+      background:#0f1217;
+    }
+    .faq summary{cursor:pointer;font-weight:820}
+    .faq p{color:#969eaa;margin:10px 0 0;font-size:14px}
+
+    .finalCta{
+      border-top:1px solid rgba(255,255,255,.06);
+      padding:92px 0;
+    }
+    .ctaBox{
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(216,171,93,.2);
+      border-radius:32px;
+      padding:44px;
+      background:
+        radial-gradient(500px 280px at 85% 20%,rgba(255,64,92,.14),transparent 70%),
+        radial-gradient(420px 260px at 5% 100%,rgba(216,171,93,.12),transparent 70%),
+        #11151b;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:center;
+    }
+    .ctaBox h2{font-size:clamp(32px,4.5vw,54px);line-height:1.08;letter-spacing:-.04em;margin:8px 0 10px}
+    .ctaBox p{margin:0;color:#a6adba}
+
+    .service{
+      padding:42px 0;
+      border-top:1px solid rgba(255,255,255,.055);
+    }
+    .serviceCard{
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:21px 23px;
+      background:rgba(255,255,255,.02);
+      color:#929aa7;
+      font-size:13px;
+    }
+    .serviceCard b{color:#cdd2dc}
+
+    footer{
+      border-top:1px solid rgba(255,255,255,.06);
+      padding:34px 0 74px;
+      color:#747d8b;
+      font-size:12px;
+    }
+    .footerGrid{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+    .footerLinks{display:flex;gap:14px;flex-wrap:wrap}
+    .footerLinks a:hover{color:#fff}
+
+    .mobileCta{
+      display:none;
+      position:fixed;
+      left:10px;
+      right:10px;
+      bottom:10px;
+      z-index:80;
+      padding:8px;
+      border-radius:18px;
+      background:rgba(12,14,19,.88);
+      border:1px solid rgba(255,255,255,.1);
+      backdrop-filter:blur(18px);
+      box-shadow:0 20px 60px rgba(0,0,0,.5);
+      gap:8px;
+    }
+    .mobileCta .btn{flex:1;padding:12px 10px;font-size:13px}
+
+    @media(max-width:980px){
+      .heroGrid{grid-template-columns:1fr;gap:42px}
+      .heroVisual{min-height:580px;max-width:600px;width:100%;margin:auto}
+      .strip{grid-template-columns:1fr 1fr}
+      .workflow{grid-template-columns:1fr 1fr}
+      .bento{grid-template-columns:1fr 1fr}
+      .feature.large{grid-row:auto;grid-column:span 2;min-height:320px}
+      .feature.wide{grid-column:span 2}
+      .previewGrid{grid-template-columns:1fr}
+      .priceGrid{grid-template-columns:1fr}
+      .price.featured{transform:none}
+      .trialBand{align-items:flex-start;flex-direction:column}
+      .fitGrid{grid-template-columns:1fr}
+      .ctaBox{grid-template-columns:1fr}
+      .navlinks>a:not(.btn){display:none}
+    }
+
+    @media(max-width:620px){
+      .wrap{width:min(var(--max),calc(100% - 24px))}
+      .section{padding:74px 0}
+      .topnote .wrap{min-height:32px}
+      .nav{height:64px}
+      .brand img{width:38px;height:38px}
+      .brand small{display:none}
+      .navlinks{gap:7px}
+      .navlinks .btn{padding:10px 12px;font-size:12px}
+      .navlinks .line{display:none}
+      .hero{padding:52px 0 68px}
+      h1{font-size:49px}
+      .lead{font-size:16px}
+      .heroActions .btn{width:100%}
+      .heroProof{gap:7px}
+      .heroVisual{min-height:510px}
+      .brandCard{width:200px;right:0}
+      .phone{width:86%;left:0}
+      .phoneScreen{min-height:510px}
+      .strip{grid-template-columns:1fr}
+      .workflow{grid-template-columns:1fr}
+      .bento{grid-template-columns:1fr}
+      .feature.large,.feature.wide{grid-column:auto}
+      .feature.large{min-height:280px}
+      .previewInfo{padding:26px}
+      .price{padding:24px}
+      .amount{font-size:46px}
+      .trialBand{padding:23px}
+      .ctaBox{padding:28px}
+      .mobileCta{display:flex}
+      footer{padding-bottom:100px}
+    }
   </style>
 </head>
+
 <body>
-<nav>
-  <div class="wrap nav">
-    <a class="brand" href="#"><img class="logo" src="hta-tangxun-icon.webp" alt="HTA 趟訊"><span>HTA 趟訊</span></a>
-    <div class="navlinks">
-      <a href="#how">怎麼用</a><a href="#features">功能</a><a href="#pricing">方案</a><a href="#faq">FAQ</a>
-      <a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">LINE 諮詢</a>
-      <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">48 小時試用</a>
+  <div class="topnote">
+    <div class="wrap">
+      <span class="spark">✦</span>
+      <span><b>48 小時免費試用</b> · Android 9+ · 不綁卡 · 不自動續費</span>
     </div>
   </div>
-</nav>
 
-<header class="hero">
-  <div class="wrap heroGrid">
-    <div>
-      <div class="eyebrow"><span class="dot"></span> Android · LINE 車趟輔助 · 持續更新</div>
-      <h1>少刷群組。<br><span class="accent">先看值得看的單。</span></h1>
-      <p class="lead">HTA 趟訊把 LINE 派車通知整理成更容易判斷的車單：接駕距離、行程公里、估價、即時／預約、肥單、順路與快速報時，集中在同一個畫面。</p>
-      <div class="heroActions">
-        <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">免費試用 48 小時</a>
-        <a class="btn ghost" href="TripAlert-latest.apk">下載 Android APK</a>
-      </div>
-      <div class="micro"><span>Android 9 以上</span><span>不綁卡</span><span>不自動續費</span><span>可直接覆蓋更新</span></div>
-    </div>
-
-    <div class="device">
-      <div class="glow"></div>
-      <div class="phone">
-        <div class="screen">
-          <div class="topline"><span>HTA 趟訊 · 即時車趟</span><span class="online">● 上線中</span></div>
-          <div class="appTitle">今晚值得先看的車單</div>
-          <div class="tabs"><div class="tab on">全部</div><div class="tab">肥單</div><div class="tab">預約</div><div class="tab">順路</div></div>
-
-          <div class="order hot">
-            <div class="orderTop"><span class="badge">肥單</span><span class="money">$1,260</span></div>
-            <div class="route"><span>↑</span><div><b>桃園區 · 中正路</b><div class="muted">接駕 2.8 km · 約 7 分</div></div></div>
-            <div class="route"><span>↓</span><div><b>板橋區 · 文化路</b><div class="muted">行程約 31 km</div></div></div>
-            <div class="meta"><span class="pill">即時</span><span class="pill">距離近</span><span class="pill">10 分報時</span></div>
-          </div>
-
-          <div class="order">
-            <div class="orderTop"><span class="badge" style="background:#141b2c;color:#98b8ff">預約</span><span class="money">$780</span></div>
-            <div class="route"><span>↑</span><div><b>中壢區 · 高鐵站</b><div class="muted">接駕 5.4 km · 約 12 分</div></div></div>
-            <div class="route"><span>↓</span><div><b>松山區 · 民生東路</b><div class="muted">預約 23:40</div></div></div>
-            <div class="meta"><span class="pill">準</span><span class="pill">晚5</span><span class="pill">晚10</span></div>
-          </div>
-
-          <div class="order">
-            <div class="orderTop"><span class="badge" style="background:#151d18;color:#73dfa3">順路</span><span class="money">$540</span></div>
-            <div class="route"><span>↑</span><div><b>龜山區 · 文化一路</b><div class="muted">往台北方向</div></div></div>
-            <div class="meta"><span class="pill">導航</span><span class="pill">金額排序</span><span class="pill">記帳</span></div>
-          </div>
-        </div>
+  <nav>
+    <div class="wrap nav">
+      <a class="brand" href="#top">
+        <img src="hta-tangxun-icon.webp" alt="HTA 趟訊">
+        <span>HTA 趟訊<small>Android 車趟輔助</small></span>
+      </a>
+      <div class="navlinks">
+        <a href="#workflow">怎麼用</a>
+        <a href="#features">功能</a>
+        <a href="#preview">介面</a>
+        <a href="#pricing">方案</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn line" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">LINE 諮詢</a>
+        <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">免費試用</a>
       </div>
     </div>
-  </div>
-</header>
+  </nav>
 
-<section class="section" id="how">
-  <div class="wrap">
-    <div class="kicker">Less switching. Faster decisions.</div>
-    <h2 class="title">不是讓你多看一個 App。<br>是少做幾個重複步驟。</h2>
-    <p class="sub">LINE 有單時，HTA 趟訊先把原本散在訊息裡的資訊整理好。你要做的，是決定這張單值不值得接。</p>
-    <div class="flow">
-      <div class="step"><span class="num">01</span><b>LINE 收到派車</b><span>從 Android 通知讀取車單內容</span></div>
-      <div class="step"><span class="num">02</span><b>自動整理</b><span>上下車、預約、備註與來源</span></div>
-      <div class="step"><span class="num">03</span><b>快速判斷</b><span>距離、行程公里、估價與肥單</span></div>
-      <div class="step"><span class="num">04</span><b>報時／導航</b><span>減少切畫面與手動輸入</span></div>
-      <div class="step"><span class="num">05</span><b>完成後記帳</b><span>收入、公里與每日筆數留存</span></div>
-    </div>
-  </div>
-</section>
+  <main id="top">
+    <header class="hero">
+      <div class="wrap heroGrid">
+        <div>
+          <div class="heroBadge"><span class="live"></span>HTA 趟訊 · 正式版持續更新中</div>
+          <h1>少刷群組。<br><span class="accent">先看值得看的單。</span></h1>
+          <p class="lead">把散在 LINE 群組裡的車趟訊息，整理成可以快速判斷的資訊：接駕距離、行程公里、估價、肥單、即時／預約、順路、報時與導航，集中在同一個工作流程。</p>
 
-<section class="section" id="features">
-  <div class="wrap">
-    <div class="kicker">Built for the actual workflow</div>
-    <h2 class="title">把真正每天會用到的，放在前面。</h2>
-    <p class="sub">不追求把畫面塞滿功能。HTA 趟訊的核心是：讓大量 LINE 車單變得更快判斷、更少遺漏。</p>
-    <div class="grid3">
-      <div class="card"><span class="num">01 / 車單解析</span><h3>上下車、備註、來源</h3><p>自動整理派車訊息，原文格式不一致時仍保留必要資訊，方便快速確認。</p></div>
-      <div class="card"><span class="num">02 / 距離與估價</span><h3>接駕距離、行程公里</h3><p>把「你到上車點」與「上車到下車」分開呈現，再搭配自己的計價規則估算。</p></div>
-      <div class="card"><span class="num">03 / 肥單</span><h3>先把高價單拉出來</h3><p>自訂肥單與超肥單門檻，搭配金額排序，避免重要車單埋在大量訊息裡。</p></div>
-      <div class="card"><span class="num">04 / 即時與預約</span><h3>兩種節奏分開處理</h3><p>即時單用分鐘報時；預約單提供準、晚 5、晚 10 等常用操作。</p></div>
-      <div class="card"><span class="num">05 / 順路</span><h3>不是只看近，還看方向</h3><p>設定目的地方向後，利用目前位置、上下車點協助判斷是否大致順路。</p></div>
-      <div class="card"><span class="num">06 / 歷史與提醒</span><h3>接完也有東西留下</h3><p>保存喊單與記帳紀錄，統計收入、公里、筆數，並提供私訊與真正 @我的強提醒。</p></div>
-    </div>
-
-    <div class="showcase">
-      <div class="wide">
-        <div class="kicker">FAST FILTER</div>
-        <div class="metric">距離近 → 遠</div>
-        <div class="caption">也可以切換成金額高 → 低，照你當下的跑法看單。</div>
-        <div class="miniList">
-          <div class="miniRow"><span>接駕距離</span><b>2.8 km</b></div>
-          <div class="miniRow"><span>行程公里</span><b>31 km</b></div>
-          <div class="miniRow"><span>系統估價</span><b>$1,260</b></div>
-        </div>
-      </div>
-      <div class="wide">
-        <div class="kicker">KEEP IMPROVING</div>
-        <div class="metric">App 內直接更新</div>
-        <div class="caption">開啟 HTA 趟訊會自動檢查新版。正常覆蓋更新可保留設定、授權與歷史資料。</div>
-        <div class="miniList">
-          <div class="miniRow"><span>問題回報</span><b>可附圖片／影片</b></div>
-          <div class="miniRow"><span>管理員回覆</span><b>App 內查看</b></div>
-          <div class="miniRow"><span>目前平台</span><b>Android</b></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section" id="preview">
-  <div class="wrap">
-    <div class="kicker">APP PREVIEW · v0.6.46</div>
-    <h2 class="title">打開 App，先看到能幫你做決定的資訊。</h2>
-    <p class="sub">這裡用目前 HTA 趟訊的操作邏輯做介面預覽：上線狀態、篩選、肥單、距離、金額、預約與順路集中在同一個工作區。</p>
-
-    <div class="previewGrid">
-      <div class="appshot">
-        <div class="appbar">
-          <div class="appbarBrand"><img src="hta-tangxun-icon.webp" alt="HTA 趟訊"><span>HTA 趟訊</span></div>
-          <span class="versionTag">v0.6.46</span>
-        </div>
-        <div class="statusLine">● 完整上線中 · 車單與提醒已啟動</div>
-
-        <div class="filterBox">
-          <div class="filterTitle">顯示條件</div>
-          <div class="filterBtns">
-            <span class="filterBtn fOrange">全部</span><span class="filterBtn fRed">肥單</span><span class="filterBtn fGold">主群／免回金</span><span class="filterBtn fGreen">順路</span>
+          <div class="heroActions">
+            <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">免費試用 48 小時</a>
+            <a class="btn gold" href="TripAlert-latest.apk">下載 Android APK</a>
           </div>
-        </div>
-        <div class="filterBox">
-          <div class="filterTitle">時間類型 · 排序方式</div>
-          <div class="filterBtns">
-            <span class="filterBtn fPurple">即時</span><span class="filterBtn fBlue">預約</span><span class="filterBtn fCyan">距離近→遠</span><span class="filterBtn fGold">金額高→低</span>
+
+          <div class="heroProof">
+            <span class="proof">不綁信用卡</span>
+            <span class="proof">單一裝置授權</span>
+            <span class="proof">可直接覆蓋更新</span>
           </div>
         </div>
 
-        <div class="tripCard hot">
-          <div class="tripHead"><span class="tripType">肥單 · 即時</span><span class="tripMoney">$1,260</span></div>
-          <div class="tripRoute"><b>桃園區</b> → 板橋區<div class="tripSub">接駕 2.8 km · 約 7 分 · 行程約 31 km</div></div>
-          <div class="tripActions"><span class="actionChip">10 分</span><span class="actionChip">導航</span><span class="actionChip">記帳</span></div>
+        <div class="heroVisual">
+          <div class="heroGlow"></div>
+
+          <div class="brandCard">
+            <img src="hta-tangxun-icon.webp" alt="HTA 趟訊金框紅車品牌圖示">
+            <div class="cap"><span>HTA 趟訊</span><span>Android 9+</span></div>
+          </div>
+
+          <div class="phone">
+            <div class="phoneScreen">
+              <div class="phoneTop">
+                <div class="phoneBrand"><img src="hta-tangxun-icon.webp" alt=""><span>HTA 趟訊</span></div>
+                <span class="online">● 上線中</span>
+              </div>
+
+              <div class="filterPanel">
+                <div class="filterTitle">顯示條件</div>
+                <div class="filterRow">
+                  <span class="fbtn orange">全部</span>
+                  <span class="fbtn red">肥單</span>
+                  <span class="fbtn goldc">主群／免回金</span>
+                  <span class="fbtn green">順路</span>
+                </div>
+              </div>
+
+              <div class="filterPanel">
+                <div class="filterTitle">時間類型 · 排序方式</div>
+                <div class="filterRow">
+                  <span class="fbtn purple">即時</span>
+                  <span class="fbtn blue">預約</span>
+                  <span class="fbtn cyan">距離近→遠</span>
+                  <span class="fbtn goldc">金額高→低</span>
+                </div>
+              </div>
+
+              <div class="ride hot">
+                <div class="rideHead"><span class="tag">肥單 · 即時</span><span class="money">$1,260</span></div>
+                <div class="route"><b>桃園區</b> → 板橋區<small>接駕 2.8 km · 約 7 分 · 行程約 31 km</small></div>
+                <div class="chips"><span class="chip">10 分</span><span class="chip">導航</span><span class="chip">記帳</span></div>
+              </div>
+
+              <div class="ride">
+                <div class="rideHead"><span class="tag" style="background:#121a2c;color:#90b7ff">預約</span><span class="money">$780</span></div>
+                <div class="route"><b>中壢區</b> → 松山區<small>23:40 · 接駕約 12 分</small></div>
+                <div class="chips"><span class="chip">準</span><span class="chip">晚 5</span><span class="chip">晚 10</span></div>
+              </div>
+
+              <div class="ride">
+                <div class="rideHead"><span class="tag" style="background:#10221a;color:#6ee2ab">順路</span><span class="money">$540</span></div>
+                <div class="route"><b>龜山區</b> → 台北方向<small>方向符合 · 可直接導航</small></div>
+                <div class="chips"><span class="chip">導航</span><span class="chip">金額排序</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap strip">
+        <div class="stripItem"><b>48 小時</b><span>免費試用，先確認適不適合自己的跑法</span></div>
+        <div class="stripItem"><b>Android 9+</b><span>目前正式版本以 Android 裝置為主</span></div>
+        <div class="stripItem"><b>App 內更新</b><span>新版可直接覆蓋安裝，不用先移除舊版</span></div>
+        <div class="stripItem"><b>官方 LINE</b><span>試用、購買、續費與授權都能直接聯絡</span></div>
+      </div>
+    </header>
+
+    <section class="section" id="workflow">
+      <div class="wrap">
+        <div class="eyebrow">實際工作流程</div>
+        <h2 class="title">不是多開一個 App。<br>是少做幾個重複動作。</h2>
+        <p class="sub">LINE 有車單時，HTA 趟訊先把原本散在訊息裡的資訊整理好。你要做的，是決定這張單值不值得接。</p>
+
+        <div class="workflow">
+          <div class="flowCard"><span class="flowNo">01 / RECEIVE</span><h3>LINE 收到車單</h3><p>從 Android 實際收到的 LINE 通知擷取車趟文字，不需要一直手動刷群組。</p></div>
+          <div class="flowCard"><span class="flowNo">02 / PARSE</span><h3>自動整理資訊</h3><p>拆出上下車、備註、來源、即時／預約等欄位，先把資訊變得能看。</p></div>
+          <div class="flowCard"><span class="flowNo">03 / DECIDE</span><h3>快速判斷</h3><p>看接駕距離、行程公里、估價、肥單與順路，依當下跑法決定要不要接。</p></div>
+          <div class="flowCard"><span class="flowNo">04 / ACT</span><h3>報時、導航、記帳</h3><p>決定後直接往下一步走，減少切換 LINE、地圖與記帳畫面的次數。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="eyebrow">核心功能</div>
+        <h2 class="title">把真正每天會用到的，<br>放在前面。</h2>
+        <p class="sub">不追求畫面塞滿功能。核心就是：大量車趟訊息來的時候，更快判斷、更少遺漏。</p>
+
+        <div class="bento">
+          <div class="feature large">
+            <div class="featureIcon">01</div>
+            <h3>距離、公里、估價一起看</h3>
+            <p>把「你現在到上車點」和「上車後到下車點」分開呈現，再依自己的計價規則做快速估算。</p>
+            <div class="bigMetric">2.8 km</div>
+            <div style="color:#8f97a4;font-size:13px">接駕距離 · 約 7 分</div>
+            <div class="miniStack">
+              <div class="miniRow"><span>行程公里</span><b>31 km</b></div>
+              <div class="miniRow"><span>系統估價</span><b>$1,260</b></div>
+              <div class="miniRow"><span>排序方式</span><b>距離／金額</b></div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="featureIcon">02</div>
+            <h3>肥單先拉出來</h3>
+            <p>自訂肥單門檻，搭配金額排序，避免值得看的單埋在大量訊息裡。</p>
+          </div>
+
+          <div class="feature">
+            <div class="featureIcon">03</div>
+            <h3>即時與預約分開</h3>
+            <p>即時單用分鐘報時；預約單提供準、晚 5、晚 10 等常用操作。</p>
+          </div>
+
+          <div class="feature">
+            <div class="featureIcon">04</div>
+            <h3>順路不只看近</h3>
+            <p>設定方向後，利用目前位置與上下車點，協助判斷是否大致順路。</p>
+          </div>
+
+          <div class="feature">
+            <div class="featureIcon">05</div>
+            <h3>私訊與 @提醒</h3>
+            <p>除了車單，也能針對真正重要的私訊與 @我的通知提供更明顯提醒。</p>
+          </div>
+
+          <div class="feature wide">
+            <div class="featureIcon">06</div>
+            <h3>接完後有紀錄，不是看完就消失</h3>
+            <p>保存喊單與歷史紀錄，統計每日收入、公里與筆數；問題回報可附圖片／影片，管理員回覆也能在 App 內查看。</p>
+            <div class="miniStack">
+              <div class="miniRow"><span>今日收入</span><b>可統計</b></div>
+              <div class="miniRow"><span>今日公里</span><b>可統計</b></div>
+              <div class="miniRow"><span>問題回報</span><b>支援圖片／影片</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="preview">
+      <div class="wrap">
+        <div class="eyebrow">介面預覽</div>
+        <h2 class="title">一眼先看決策資訊，<br>再決定要不要點進 LINE。</h2>
+        <p class="sub">下方為目前 HTA 趟訊的工作邏輯示意。實際介面會隨版本更新調整，但核心操作方向一致。</p>
+
+        <div class="previewGrid">
+          <div class="previewApp">
+            <div class="previewHeader">
+              <div class="previewBrand"><img src="hta-tangxun-icon.webp" alt=""><span>HTA 趟訊</span></div>
+              <span class="version">v0.6.46</span>
+            </div>
+            <div class="status">● 完整上線中 · 車單與提醒已啟動</div>
+
+            <div class="filterPanel">
+              <div class="filterTitle">顯示條件</div>
+              <div class="filterRow"><span class="fbtn orange">全部</span><span class="fbtn red">肥單</span><span class="fbtn goldc">主群／免回金</span><span class="fbtn green">順路</span></div>
+            </div>
+
+            <div class="filterPanel">
+              <div class="filterTitle">時間類型 · 排序方式</div>
+              <div class="filterRow"><span class="fbtn purple">即時</span><span class="fbtn blue">預約</span><span class="fbtn cyan">距離近→遠</span><span class="fbtn goldc">金額高→低</span></div>
+            </div>
+
+            <div class="ride hot">
+              <div class="rideHead"><span class="tag">肥單 · 即時</span><span class="money">$1,260</span></div>
+              <div class="route"><b>桃園區</b> → 板橋區<small>接駕 2.8 km · 約 7 分 · 行程約 31 km</small></div>
+              <div class="chips"><span class="chip">10 分</span><span class="chip">導航</span><span class="chip">記帳</span></div>
+            </div>
+
+            <div class="ride">
+              <div class="rideHead"><span class="tag" style="background:#121a2c;color:#90b7ff">預約</span><span class="money">$780</span></div>
+              <div class="route"><b>中壢區</b> → 松山區<small>23:40 · 接駕約 12 分</small></div>
+              <div class="chips"><span class="chip">準</span><span class="chip">晚 5</span><span class="chip">晚 10</span></div>
+            </div>
+          </div>
+
+          <div class="previewInfo">
+            <div class="eyebrow">LESS SWITCHING</div>
+            <h3>少切畫面，<br>把判斷留在同一頁。</h3>
+            <p>不是把 LINE 搬進另一個 App，而是把「現在要不要接」真正會看的資訊先整理好。</p>
+            <div class="checks">
+              <div class="check"><span>01</span><div><b>篩選先做掉</b><br>肥單、即時、預約、順路、距離與金額依跑法切換。</div></div>
+              <div class="check"><span>02</span><div><b>距離拆清楚</b><br>接駕距離與實際行程公里分開，不混在一起看。</div></div>
+              <div class="check"><span>03</span><div><b>看到單就能往下做</b><br>報時、Google Maps 導航與完成後記帳，都從車單流程接續。</div></div>
+              <div class="check"><span>04</span><div><b>版本持續更新</b><br>可直接覆蓋安裝新版，正常情況不需先解除舊版。</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="eyebrow">方案價格</div>
+        <h2 class="title">先用 48 小時。<br>真的有幫助，再留下。</h2>
+        <p class="sub">不綁信用卡、不自動扣款。試用後再決定要不要開正式授權。</p>
+
+        <div class="priceGrid">
+          <div class="price">
+            <div class="priceName">月繳</div>
+            <div class="amount">599 <small>NT$ / 月</small></div>
+            <div class="save">適合先短期使用</div>
+            <ul><li>完整功能</li><li>單一授權裝置</li><li>App 內更新</li><li>問題回報支援</li></ul>
+            <a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener" style="width:100%">LINE 詢問月繳</a>
+          </div>
+
+          <div class="price featured">
+            <span class="recommend">推薦</span>
+            <div class="priceName">季繳</div>
+            <div class="amount">1,499 <small>NT$ / 90 天</small></div>
+            <div class="save">平均約 NT$500 / 月</div>
+            <ul><li>完整功能</li><li>比月繳 3 個月省 NT$298</li><li>單一授權裝置</li><li>App 內更新與支援</li></ul>
+            <a class="btn gold" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener" style="width:100%">LINE 詢問季繳</a>
+          </div>
+
+          <div class="price">
+            <div class="priceName">年繳</div>
+            <div class="amount">4,990 <small>NT$ / 年</small></div>
+            <div class="save">平均約 NT$416 / 月</div>
+            <ul><li>完整功能</li><li>適合長期固定跑車</li><li>單一授權裝置</li><li>全年更新與支援</li></ul>
+            <a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener" style="width:100%">LINE 詢問年繳</a>
+          </div>
         </div>
 
-        <div class="tripCard">
-          <div class="tripHead"><span class="tripType" style="background:#121a2b;color:#8eb5ff">預約</span><span class="tripMoney">$780</span></div>
-          <div class="tripRoute"><b>中壢區</b> → 松山區<div class="tripSub">23:40 · 接駕約 12 分</div></div>
-          <div class="tripActions"><span class="actionChip">準</span><span class="actionChip">晚 5</span><span class="actionChip">晚 10</span></div>
+        <div class="trialBand">
+          <div>
+            <div class="eyebrow">48-HOUR TRIAL</div>
+            <h3>免費試用 48 小時</h3>
+            <p>加入官方 LINE，傳送手機號碼與 App 顯示的裝置碼，由亞城協助開通。</p>
+          </div>
+          <div style="display:flex;gap:9px;flex-wrap:wrap">
+            <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">加入 LINE 申請試用</a>
+            <a class="btn ghost" href="TripAlert-latest.apk">先下載 APK</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="previewCopy">
-        <div class="kicker">LESS SWITCHING</div>
-        <h3>少切畫面，<br>把判斷留在同一頁。</h3>
-        <p>不是把 LINE 搬進另一個 App，而是把「現在要不要接」真正會看的資訊先整理好。</p>
-        <div class="previewChecks">
-          <div class="previewCheck"><span>01</span><div><b>篩選先做掉</b><br>肥單、即時、預約、順路、距離與金額依跑法切換。</div></div>
-          <div class="previewCheck"><span>02</span><div><b>距離拆清楚</b><br>接駕距離與實際行程公里分開，不混在一起看。</div></div>
-          <div class="previewCheck"><span>03</span><div><b>看到單就能往下做</b><br>報時、Google Maps 導航與完成後記帳，都從車單流程接續。</div></div>
-          <div class="previewCheck"><span>04</span><div><b>持續更新</b><br>目前官網與正式 APK 已同步至 HTA 趟訊品牌。</div></div>
+    <section class="section" id="fit">
+      <div class="wrap">
+        <div class="eyebrow">適合對象</div>
+        <h2 class="title">適不適合，用兩分鐘就能判斷。</h2>
+        <p class="sub">HTA 趟訊不是所有人都需要。下面這幾種情況，差異最明顯。</p>
+
+        <div class="fitGrid">
+          <div class="fit good">
+            <h3>比較適合你，如果你…</h3>
+            <ul>
+              <li>同時待很多 LINE 車隊／派車群組。</li>
+              <li>常需要快速看距離、金額、方向再決定。</li>
+              <li>即時單與預約單都會接，常需要快速報時。</li>
+              <li>希望跑完後能順手留下收入與公里紀錄。</li>
+            </ul>
+          </div>
+
+          <div class="fit bad">
+            <h3>可能不需要，如果你…</h3>
+            <ul>
+              <li>平常只看一個群組，訊息量很少。</li>
+              <li>主要使用 iPhone，目前正式版仍以 Android 為主。</li>
+              <li>希望 App 代替自己做最後接單決定。</li>
+              <li>不願意開啟通知存取或必要定位權限。</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="section" id="pricing">
-  <div class="wrap">
-    <div class="kicker">Simple pricing</div>
-    <h2 class="title">先用 48 小時。<br>有幫助，再留下。</h2>
-    <p class="sub">不綁信用卡、不自動扣款。試用期結束後，再決定要不要開正式授權。</p>
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="eyebrow">常見問題</div>
+        <h2 class="title">第一次用，先看這裡。</h2>
 
-    <div class="priceGrid">
-      <div class="price">
-        <div class="priceName">月繳</div>
-        <div class="amount">599 <small>NT$ / 月</small></div>
-        <div class="save">適合先短期使用</div>
-        <ul><li>完整功能</li><li>單一授權裝置</li><li>App 內更新</li><li>問題回報支援</li></ul>
-        <a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener" style="width:100%">LINE 詢問月繳</a>
+        <div class="faq">
+          <details><summary>HTA 趟訊會直接讀我的完整 LINE 聊天紀錄嗎？</summary><p>不會登入你的 LINE 帳號去讀完整聊天紀錄。主要來源是 Android 系統實際收到的 LINE 通知；若 LINE 本身沒有把某則訊息送成通知，HTA 趟訊通常也看不到該則內容。</p></details>
+          <details><summary>目前支援 iPhone 嗎？</summary><p>目前正式版本以 Android 9 以上為主。</p></details>
+          <details><summary>換手機怎麼辦？</summary><p>授權會綁定裝置。正常換機不用重新購買，請透過官方 LINE 聯絡亞城協助重新綁定。</p></details>
+          <details><summary>更新 App 會不會把資料洗掉？</summary><p>正常直接覆蓋更新，設定、授權與歷史資料會保留。不要先解除安裝舊版。</p></details>
+          <details><summary>距離為什麼可能跟 Google Maps 不完全一樣？</summary><p>HTA 趟訊用於快速篩選與估價；真正導航與即時路況仍以 Google Maps 當下路線為準。</p></details>
+          <details><summary>試用需要綁信用卡嗎？</summary><p>不需要。48 小時試用不綁卡，也不會自動續費。</p></details>
+          <details><summary>付款後是自動續約嗎？</summary><p>不是。正式授權目前不自動扣款；到期後要不要續費由你自己決定。</p></details>
+        </div>
       </div>
+    </section>
 
-      <div class="price featured">
-        <span class="recommend">推薦</span>
-        <div class="priceName">季繳</div>
-        <div class="amount">1,499 <small>NT$ / 90 天</small></div>
-        <div class="save">平均約 NT$500 / 月</div>
-        <ul><li>完整功能</li><li>比月繳 3 個月省 NT$298</li><li>單一授權裝置</li><li>App 內更新與支援</li></ul>
-        <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener" style="width:100%">LINE 詢問季繳</a>
+    <section class="finalCta">
+      <div class="wrap">
+        <div class="ctaBox">
+          <div>
+            <div class="eyebrow">READY TO TRY</div>
+            <h2>先跑兩天。<br>再決定它值不值得留下。</h2>
+            <p>48 小時免費試用 · 不綁卡 · 不自動續費。</p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">LINE 申請免費試用</a>
+            <a class="btn ghost" href="TripAlert-latest.apk">下載 Android APK</a>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="price">
-        <div class="priceName">年繳</div>
-        <div class="amount">4,990 <small>NT$ / 年</small></div>
-        <div class="save">平均約 NT$416 / 月</div>
-        <ul><li>完整功能</li><li>適合長期固定跑車</li><li>單一授權裝置</li><li>全年更新與支援</li></ul>
-        <a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener" style="width:100%">LINE 詢問年繳</a>
+    <section class="service">
+      <div class="wrap">
+        <div class="serviceCard">
+          <b>使用與服務說明：</b>
+          HTA 趟訊為獨立第三方工具，與 LINE 官方無隸屬或合作關係。服務目前支援 Android 9 以上；授權綁定單一裝置。試用與正式授權皆不自動扣款，購買、續費與客服請透過官方 LINE 聯絡亞城。
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footerGrid">
+      <div>
+        <div style="color:#b7bdc8;margin-bottom:5px">© 2026 HTA 趟訊</div>
+        <div>官方客服與授權協助：亞城 · Android 即時車趟輔助工具</div>
+      </div>
+      <div class="footerLinks">
+        <a href="privacy.html">隱私權政策</a>
+        <a href="terms.html">使用條款</a>
+        <a href="refund.html">退款與授權規則</a>
+        <a href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">官方 LINE</a>
       </div>
     </div>
+  </footer>
 
-    <div class="trialBox" id="trial">
-      <div class="kicker">48-HOUR TRIAL</div>
-      <h3 style="font-size:27px;margin:5px 0 4px">免費試用 48 小時</h3>
-      <div style="color:#939aa8">加入 HTA 趟訊官方 LINE，傳送手機號碼與 App 顯示的裝置碼，由亞城協助開通試用與授權。</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
-        <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">加入官方 LINE 申請試用</a>
-        <a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">LINE 諮詢／購買續費</a>
-      </div>
-    </div>
+  <div class="mobileCta">
+    <a class="btn ghost" href="TripAlert-latest.apk">下載 APK</a>
+    <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">48 小時試用</a>
   </div>
-</section>
-
-<section class="section" id="faq">
-  <div class="wrap">
-    <div class="kicker">FAQ</div>
-    <h2 class="title">第一次用，先看這裡。</h2>
-    <div class="faq">
-      <details><summary>HTA 趟訊會直接讀我的 LINE 聊天內容嗎？</summary><p>HTA 趟訊主要從 Android 收到的 LINE 通知進行判斷。若 LINE 本身沒有把通知送到手機，HTA 趟訊也無法看到那一則。</p></details>
-      <details><summary>目前支援 iPhone 嗎？</summary><p>目前正式版本以 Android 為主。</p></details>
-      <details><summary>換手機怎麼辦？</summary><p>授權會綁定裝置。換手機或裝置碼改變時，需重新綁定授權。</p></details>
-      <details><summary>更新 App 會不會把資料洗掉？</summary><p>正常直接覆蓋更新，設定、授權與歷史資料會保留。不要先解除安裝舊版。</p></details>
-      <details><summary>距離為什麼可能跟 Google Maps 不完全一樣？</summary><p>HTA 趟訊用於快速篩選與估價；真正導航與即時路況仍以 Google Maps 當下路線為準。</p></details>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="padding:44px 0">
-  <div class="wrap">
-    <div class="card" style="min-height:auto">
-      <div class="kicker">SERVICE NOTE</div>
-      <h3 style="font-size:20px;margin:12px 0 8px">使用與服務說明</h3>
-      <p style="margin:0;color:#949baa;font-size:14px">HTA 趟訊為獨立第三方工具，與 LINE 官方無隸屬或合作關係。服務目前支援 Android 9 以上；授權綁定單一裝置，換機需重新綁定。試用與正式授權皆不自動扣款，購買、續費與客服請透過官方 LINE 聯絡亞城。</p>
-      <div style="margin-top:16px"><a class="btn ghost" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">聯絡 HTA 趟訊官方 LINE</a></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap footerGrid">
-    <span>© 2026 HTA 趟訊 · 官方客服與授權協助：亞城</span>
-    <span><a href="privacy.html">隱私權政策</a> · <a href="terms.html">使用條款</a> · <a href="refund.html">退款與授權規則</a></span>
-  </div>
-</footer>
-
 </body>
 </html>
