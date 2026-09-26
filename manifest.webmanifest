@@ -1,0 +1,40 @@
+{
+  "name": "HTA 趟訊",
+  "short_name": "HTA 趟訊",
+  "description": "Android LINE 車趟輔助工具",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08090d",
+  "theme_color": "#08090d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/hta-tangxun-icon.webp",
+      "sizes": "any",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "下載 App",
+      "short_name": "下載",
+      "url": "/download.html",
+      "icons": [{"src":"/hta-tangxun-icon.webp","sizes":"any","type":"image/webp"}]
+    },
+    {
+      "name": "版本更新",
+      "short_name": "更新",
+      "url": "/updates.html",
+      "icons": [{"src":"/hta-tangxun-icon.webp","sizes":"any","type":"image/webp"}]
+    },
+    {
+      "name": "方案價格",
+      "short_name": "方案",
+      "url": "/pricing.html",
+      "icons": [{"src":"/hta-tangxun-icon.webp","sizes":"any","type":"image/webp"}]
+    }
+  ]
+}
