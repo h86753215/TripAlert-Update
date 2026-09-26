@@ -1,1 +1,1 @@
-regenerate 2026-09-27 direct-v2-correct-pricing\n
+regenerate 2026-09-27 fix-duration-14s-v3\n
