@@ -1,1 +1,6 @@
-{"versionCode":139,"versionName":"0.6.58","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.58.apk","notes":"HTA 趟訊 0.6.58 已發布，可直接覆蓋更新。"}
+{
+  "versionCode": 139,
+  "versionName": "0.6.58",
+  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.58.apk",
+  "notes": "v0.6.58：喊單改為必須選到 LINE 真正的 @成員標記；若無法觸發真正 @ 選單，不再塞入假的 @ 文字，會保留喊單內容並提示手動標記。"
+}
