@@ -1,6 +1,1 @@
-{
-  "versionCode": 153,
-  "versionName": "0.6.72",
-  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.72.apk",
-  "notes": "v0.6.72：修正「M 八德新興路971號／⇩：大華街300巷」這類 ⇩ 下車符號，現在會正確保留上車八德新興路971號與下車大華街300巷。按 X 後改成同一則貼文硬隱藏 5 分鐘：舊通知重播、背景補算與 UI 刷新都不會再跳；只有 LINE 收到較新的發布時間、確認群組真的重新 PO，才會提前重新顯示。新增可獨立開關的超近單提醒，預設 3.0 km；有道路接駕距離時以道路距離判斷，只有快速直線距離時會保守縮短 0.5 km 避免誤報。提示音從 6 種擴充到 12 種，新增 Radar Sweep、Double Knock、Arcade Alert、Rising Chirp、Beacon、Urgent Triple，超近單可獨立選音效。"
-}
+{"versionCode":154,"versionName":"0.6.73","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.73.apk","notes":"HTA 趟訊 0.6.73 已發布，可直接覆蓋更新。"}
