@@ -1,1 +1,6 @@
-{"versionCode":143,"versionName":"0.6.62","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.62.apk","notes":"HTA 趟訊 0.6.62 已發布，可直接覆蓋更新。"}
+{
+  "versionCode": 143,
+  "versionName": "0.6.62",
+  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.62.apk",
+  "notes": "v0.6.62：補強省略「縣／市」的中部行政區格式，例如「雲林斗六市」「彰化員林市」「南投草屯鎮」「台中太平區」，現在會正確取出斗六／員林／草屯／太平，不再把縣名與行政區黏在一起。"
+}
