@@ -1,1 +1,1 @@
-regenerate 2026-09-27 real-app-screen-valid\n
+regenerate 2026-09-27 actual-app-screens-v2\n
