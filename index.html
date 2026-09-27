@@ -86,7 +86,14 @@
     .valueCard{border:1px solid var(--line);border-radius:20px;padding:23px;background:linear-gradient(145deg,#121720,#0d1015)}
     .valueCard .num{font-size:12px;color:var(--gold2);font-weight:900}.valueCard h3{font-size:20px;margin:10px 0 7px}.valueCard p{font-size:13px;color:#969eab;margin:0}
 
-    .pricing{padding:46px 0}
+    .pricing{padding:42px 0}
+    .latestHome{padding:10px 0 52px}
+    .latestBox{border:1px solid rgba(216,171,93,.22);border-radius:22px;padding:22px;background:linear-gradient(145deg,rgba(216,171,93,.06),rgba(255,255,255,.02));display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+    .latestBox h3{font-size:24px;margin:5px 0 5px}
+    .latestBox p{color:#969eab;font-size:13px;margin:0;max-width:720px}
+    .versionPill{display:inline-flex;padding:5px 9px;border-radius:999px;border:1px solid rgba(97,228,162,.2);color:#8af0ba;background:rgba(97,228,162,.05);font-size:11px;font-weight:850}
+    .latestActions{display:flex;gap:8px;flex-wrap:wrap}
+    @media(max-width:700px){.latestBox{grid-template-columns:1fr}.latestActions .btn{flex:1}}
     .priceBox{border:1px solid rgba(216,171,93,.26);border-radius:26px;padding:28px;background:linear-gradient(135deg,rgba(216,171,93,.08),rgba(239,54,86,.05)),#11151b;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
     .priceBox h2{font-size:34px;margin:4px 0}.priceBox p{color:#9aa2af;margin:0}.priceBig{font-size:48px;font-weight:930;color:var(--gold2);letter-spacing:-.04em}
     .priceActions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
@@ -96,7 +103,7 @@
 
     @media(max-width:980px){
       .navlinks a:not(.primary){display:none}.heroGrid{grid-template-columns:1fr}.logoHero{display:none}
-      .quickGrid{grid-template-columns:repeat(3,1fr)}.valueGrid{grid-template-columns:1fr}.priceBox{grid-template-columns:1fr}.priceActions{justify-content:flex-start}
+      .quickGrid{grid-template-columns:repeat(3,1fr)}.valueGrid{grid-template-columns:1fr!important}.priceBox{grid-template-columns:1fr}.priceActions{justify-content:flex-start}
     }
     @media(max-width:620px){
       .wrap{width:min(var(--max),calc(100% - 24px))}.hero{padding-top:50px}h1{font-size:49px}.lead{font-size:16px}
@@ -175,14 +182,18 @@
   <section class="value">
     <div class="wrap">
       <div class="sectionHead">
-        <div><div class="eyebrow">核心價值</div><h2>三件事，講完。</h2></div>
-        <p>詳細功能放到功能頁，不在首頁塞滿。</p>
+        <div><div class="eyebrow">核心功能</div><h2>真正每天會用到的，六個就夠。</h2></div>
+        <p>完整說明放到功能頁；首頁只留最常用的判斷資訊。</p>
       </div>
-      <div class="valueGrid">
-        <div class="valueCard"><div class="num">01</div><h3>先整理</h3><p>把大量 LINE 車單先變成能快速判斷的資訊。</p></div>
-        <div class="valueCard"><div class="num">02</div><h3>再篩選</h3><p>肥單、距離、金額、預約、順路照自己的跑法看。</p></div>
-        <div class="valueCard"><div class="num">03</div><h3>直接操作</h3><p>看完就接報時、導航、記帳，不用一直切畫面。</p></div>
+      <div class="valueGrid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="valueCard"><div class="num">01</div><h3>接駕距離</h3><p>先知道離上車點多遠，快速判斷值不值得接。</p></div>
+        <div class="valueCard"><div class="num">02</div><h3>行程公里</h3><p>上車到下車的里程分開看，不跟接駕混在一起。</p></div>
+        <div class="valueCard"><div class="num">03</div><h3>估價／肥單</h3><p>依自己的計價規則估算，值得看的單優先標示。</p></div>
+        <div class="valueCard"><div class="num">04</div><h3>即時／預約／順路</h3><p>依時間與方向快速篩出現在想接的車單。</p></div>
+        <div class="valueCard"><div class="num">05</div><h3>報時／導航</h3><p>10／15／20 分報時、Google Maps 與原群操作接著做。</p></div>
+        <div class="valueCard"><div class="num">06</div><h3>歷史／收入／公里</h3><p>跑完後保留車趟、收入、公里與效益紀錄。</p></div>
       </div>
+      <div style="margin-top:14px;text-align:center"><a class="btn ghost" href="features.html">看完整功能介紹</a></div>
     </div>
   </section>
 
@@ -201,7 +212,23 @@
       </div>
     </div>
   </section>
-</main>
+<section class="latestHome" id="latestHome">
+    <div class="wrap">
+      <div class="latestBox">
+        <div>
+          <span class="versionPill" id="latestVersionHome">最新版讀取中</span>
+          <h3>版本持續更新中</h3>
+          <p id="latestNotesHome">最新版與更新內容會自動跟著正式發布資訊同步。</p>
+        </div>
+        <div class="latestActions">
+          <a class="btn ghost" href="updates.html">查看版本更新</a>
+          <a class="btn primary" href="download.html">下載最新版</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
 
 <footer>
   <div class="wrap footer">
@@ -246,8 +273,13 @@ fetch("update.json",{cache:"no-store"})
   .then(r=>r.ok?r.json():null)
   .then(d=>{
     if(!d||!d.versionName)return;
+    const version=String(d.versionName).replace(/^v/i,"");
     const el=document.getElementById("currentVersionText");
-    if(el) el.textContent="目前 v"+String(d.versionName).replace(/^v/i,"")+"・查看更新內容";
+    if(el) el.textContent="目前 v"+version+"・查看更新內容";
+    const homeVersion=document.getElementById("latestVersionHome");
+    if(homeVersion) homeVersion.textContent="目前 v"+version;
+    const homeNotes=document.getElementById("latestNotesHome");
+    if(homeNotes && d.notes) homeNotes.textContent=d.notes;
   }).catch(()=>{});
 
 if ("serviceWorker" in navigator) {
