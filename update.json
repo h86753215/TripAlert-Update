@@ -1,1 +1,6 @@
-{"versionCode":146,"versionName":"0.6.65","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.65.apk","notes":"HTA 趟訊 0.6.65 已發布，可直接覆蓋更新。"}
+{
+  "versionCode": 146,
+  "versionName": "0.6.65",
+  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.65.apk",
+  "notes": "v0.6.65：整合抓單／肥單／喊單可靠性更新。肥單與原文明示高價單優先處理但仍遵守距離篩選；LINE 最新訊息優先解析、延後喊單競爭判定，降低肥單被舊訊息卡住；相同路線不同乘客不再被過度去重；補強多種項目符號、分段通知、@發文者＋地址格式；修正 AE&DING 實例「@名稱＋樹林忠孝街67巷1號到／下車松柏街22巷1號10.5/370」，可正確取出上下車點並移除尾端10.5/370；喊單增加處理中鎖、既有草稿保護與更嚴格群組確認；定位短暫延遲時距離篩選維持2分鐘，並立即採用手機最近位置；另減少重複通知頻道建立、授權驗證與即時資料寫入造成的卡頓。"
+}
