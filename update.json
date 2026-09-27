@@ -1,1 +1,6 @@
-{"versionCode":142,"versionName":"0.6.61","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.61.apk","notes":"HTA 趟訊 0.6.61 已發布，可直接覆蓋更新。"}
+{
+  "versionCode": 142,
+  "versionName": "0.6.61",
+  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.61.apk",
+  "notes": "v0.6.61：擴充台中、彰化、南投、雲林常用行政區的離線辨識與座標。像「太平立功路」「彰化中山路」「草屯中正路」「斗六中山路」可更快取得區域與距離，不必完全依賴 Android Geocoder；同時修正「桃園復興路」這類路名碰巧與行政區同名時，避免誤喊成復興。"
+}
