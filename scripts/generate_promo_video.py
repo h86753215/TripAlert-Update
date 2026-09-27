@@ -44,7 +44,11 @@ def fit_box(im,max_w,max_h):
     ratio=min(max_w/im.width,max_h/im.height)
     return im.resize((max(1,int(im.width*ratio)),max(1,int(im.height*ratio))),Image.LANCZOS)
 
-app=Image.open(APP).convert("RGB")
+converted=OUT/"app-real.png"
+subprocess.run([
+    "ffmpeg","-y","-i",APP,"-frames:v","1",str(converted)
+],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+app=Image.open(converted).convert("RGB")
 aw,ah=app.size
 print("APP screenshot", aw, ah)
 
