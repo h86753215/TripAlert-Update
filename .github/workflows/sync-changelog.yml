@@ -37,9 +37,13 @@ jobs:
           today = datetime.now(ZoneInfo("Asia/Taipei")).strftime("%Y-%m-%d")
 
           found = False
+          generic_note = ("已發布" in notes and "覆蓋更新" in notes and "：" not in notes and ":" not in notes)
           for item in history:
               if str(item.get("version","")).lstrip("v") == version:
-                  item["notes"] = notes or item.get("notes","")
+                  # Keep richer hand-authored notes when update.json only contains
+                  # the generic release sentence.
+                  if notes and (not generic_note or not item.get("notes")):
+                      item["notes"] = notes
                   item["date"] = item.get("date") or today
                   found = True
                   break
