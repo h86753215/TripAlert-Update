@@ -1,6 +1,1 @@
-{
-  "versionCode": 141,
-  "versionName": "0.6.60",
-  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.60.apk",
-  "notes": "v0.6.60：修正單字行政區喊單名稱。像台中市東區、新竹市北區、嘉義西區，以及省略「市」的台中東區，現在會保留為東區／北區／西區，不再錯成「東」「北」或只剩時間；板橋、八德、太平等既有多字行政區維持原本簡稱。"
-}
+{"versionCode":142,"versionName":"0.6.61","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.61.apk","notes":"HTA 趟訊 0.6.61 已發布，可直接覆蓋更新。"}
