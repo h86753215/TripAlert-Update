@@ -1,1 +1,6 @@
-{"versionCode":157,"versionName":"0.6.76","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.76.apk","notes":"HTA 趟訊 0.6.76 已發布，可直接覆蓋更新。"}
+{
+  "versionCode": 157,
+  "versionName": "0.6.76",
+  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.76.apk",
+  "notes": "v0.6.76：修正「M 中壢星光大道／⬇新莊區中和街171號」未正常偵測的問題。原文其實可解析出上下車，但「中壢星光大道」這種沒有門牌號、只有已知行政區簡稱＋道路名的上車點，先前被地址可信度判斷擋掉。現在像「中壢星光大道」「板橋文化路」「桃園中山路」都會視為可靠地址；同時保留對「北區自由聯盟」「桃園低月費車隊」等群名／宣傳文字的排除，避免放寬後產生假單。"
+}
