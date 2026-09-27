@@ -1,1 +1,6 @@
-{"versionCode":156,"versionName":"0.6.75","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.75.apk","notes":"HTA 趟訊 0.6.75 已發布，可直接覆蓋更新。"}
+{
+  "versionCode": 156,
+  "versionName": "0.6.75",
+  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.75.apk",
+  "notes": "v0.6.75：專門加速 LINE 喊單進群流程。原群捷徑成功不再盲目信任 5 秒，而是 LINE 一出現就立刻檢查是否真的進到目標群；若已是正確群直接開始真 @，若是錯群立即切搜尋，若只開到 LINE 外面約 1.2 秒仍未進群也立刻改用聊天搜尋，不再空等。原群捷徑優先順序改成「目前仍活著的精確 LINE 通知 → 精確 sourceKey 記憶 → 同群記憶 → 搜尋備援」，搜尋各段等待也縮短。仍維持不自動送出，最後停在真 @＋喊單文字完成，由使用者自行按送出。"
+}
