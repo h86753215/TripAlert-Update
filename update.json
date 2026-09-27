@@ -1,6 +1,1 @@
-{
-  "versionCode": 140,
-  "versionName": "0.6.59",
-  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.59.apk",
-  "notes": "v0.6.59：修正喊單模板預設值的換行相容問題；MOMO 預設正確使用路名＋時間，其他群組正確使用行政區＋時間。舊版若曾把模板換行存成字面上的 \\\\n，更新後會自動修復，不必重新設定。"
-}
+{"versionCode":141,"versionName":"0.6.60","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.60.apk","notes":"HTA 趟訊 0.6.60 已發布，可直接覆蓋更新。"}
