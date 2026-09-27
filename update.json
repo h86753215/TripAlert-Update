@@ -1,6 +1,1 @@
-{
-  "versionCode": 155,
-  "versionName": "0.6.74",
-  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.74.apk",
-  "notes": "v0.6.74：修正群規／附加費文字被誤判成車單，例如「🌸代送代購+100 機場接送+50」「🍑北區自由聯盟🌖」不再被當成上車地點；真正地址仍會正常保留。X 隱藏規則也改成硬性 5 分鐘：按 X 後的 5 分鐘內，即使群組重新 PO 同一張也不顯示；5 分鐘到期後舊貼文仍不會自己復活，只有 5 分鐘結束後再次收到新的 LINE repost，才會重新出現。"
-}
+{"versionCode":156,"versionName":"0.6.75","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.75.apk","notes":"HTA 趟訊 0.6.75 已發布，可直接覆蓋更新。"}
