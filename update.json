@@ -1,6 +1,1 @@
-{
-  "versionCode": 159,
-  "versionName": "0.6.78",
-  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.78.apk",
-  "notes": "v0.6.78：修正「04:00／林口民視」在多張上車單批次中漏抓的問題。現在把「民視／電視台／電視公司」正式視為地標型 POI，像「林口民視」會正確解析成預約 04:00 的上車點並視為可靠地標；整批「北安路805巷11號、新莊區四維路205-3號、四川路一段33號、板橋區江翠里吳鳳路50巷89號、04:00 林口民視」已加入回歸測試，必須完整解析成 5 張單。"
-}
+{"versionCode":159,"versionName":"0.6.78","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.78.apk","notes":"HTA 趟訊 0.6.78 已發布，可直接覆蓋更新。"}
