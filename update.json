@@ -1,1 +1,6 @@
-{"versionCode":147,"versionName":"0.6.66","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.66.apk","notes":"HTA 趟訊 0.6.66 已發布，可直接覆蓋更新。"}
+{
+  "versionCode": 147,
+  "versionName": "0.6.66",
+  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.66.apk",
+  "notes": "v0.6.66：第二輪抓單／合併／喊單穩定性強化。LINE 同一 bot 在極短時間內連發兩張完整車單時不再因時間太近被黏成一張；只有明確下車尾段、車資、備註、行李或時間續段才允許合併。跨群相同路線只在 45 秒內視為可能轉貼，避免較晚出現的不同乘客被吃掉；喊單完成紀錄優先精確綁定同一上車地址，避免同群多單串錯。畫面發布秒數改為 2 秒更新，降低無意義 UI 輪詢；原單高價在篩選與顯示邏輯保持一致。另支援小數里程/車資格式如 21.5/850：地址會去尾，並可取出 850 作為原單金額優先判斷，但 50/20、3/100 這類群規不會被誤當車資。"
+}
