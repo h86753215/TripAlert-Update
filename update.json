@@ -1,1 +1,6 @@
-{"versionCode":148,"versionName":"0.6.67","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.67.apk","notes":"HTA 趟訊 0.6.67 已發布，可直接覆蓋更新。"}
+{
+  "versionCode": 148,
+  "versionName": "0.6.67",
+  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.67.apk",
+  "notes": "v0.6.67：新增群組地名別名「🍑／蜜桃＝桃園」，會直接當桃園下車地處理並套用桃園定位與喊單區域；修正你截圖中「龜山區楓福里忠義路一段190號／⬇🍑」無法辨識目的地的問題。另修正航班格式「航班CI187／2112落地／去永和$1050／休旅」：21:12視為航班落地時間、機場視為接客點、永和視為目的地、1050保留為原單報價，不再把「落地」誤當上車地址。相關實例已加入回歸測試。"
+}
