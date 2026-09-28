@@ -4,6 +4,7 @@ const CORE = [
   "/index.html",
   "/download.html",
   "/features.html",
+  "/guide.html",
   "/pricing.html",
   "/updates.html",
   "/hta-tangxun-icon.webp",
