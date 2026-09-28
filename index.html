@@ -111,10 +111,18 @@
       .sectionHead{align-items:flex-start;flex-direction:column}.videoMeta{align-items:flex-start;flex-direction:column}.priceBig{font-size:42px}
       .mobileCta{display:flex}footer{padding-bottom:108px}
     }
+  
+    .trialPath{padding:8px 0 34px}.trialPathBox{border:1px solid rgba(216,171,93,.24);border-radius:24px;padding:22px;background:linear-gradient(145deg,rgba(216,171,93,.07),rgba(239,54,86,.035)),#0f1319}
+    .trialPathHead{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:14px}.trialPathHead h2{font-size:28px;margin:3px 0 0;letter-spacing:-.03em}.trialPathHead p{margin:0;color:#939ca9;font-size:13px;max-width:430px}
+    .trialPathGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.trialPathStep{border:1px solid rgba(255,255,255,.08);border-radius:17px;padding:16px;background:rgba(255,255,255,.025)}
+    .trialPathStep b{display:block;font-size:14px;margin-bottom:4px}.trialPathStep span{color:#929aa7;font-size:12px}.trialPathStep i{font-style:normal;color:var(--gold2);font-weight:950;margin-right:5px}
+    .trialPathNote{margin-top:12px;color:#bff5d8;font-size:12px;font-weight:800}
+    @media(max-width:700px){.trialPathHead{align-items:flex-start;flex-direction:column}.trialPathGrid{grid-template-columns:1fr}.trialPathBox{padding:18px}}
+
   </style>
 </head>
 <body>
-<div class="topbar">48 小時免費試用 · 首月 NT$499 · Android 9+ · 不綁卡 · 不自動續費</div>
+<div class="topbar">48 小時免費試用（授權正式開通後起算） · 首月 NT$499 · Android 9+ · 不綁卡 · 不自動續費</div>
 <nav>
   <div class="wrap nav">
     <a class="brand" href="./"><img src="hta-tangxun-icon.webp" alt="HTA 趟訊">HTA 趟訊</a>
@@ -123,9 +131,9 @@
       <a href="guide.html">新手必看</a>
       <a href="#video">操作影片</a>
       <a href="pricing.html">方案價格</a>
-      <a href="download.html">下載 App</a>
+      <a href="download.html">下載 Android APK</a>
       <a href="updates.html">版本更新</a>
-      <a class="btn primary" href="https://lin.ee/y9RBpXc" target="_blank" rel="noopener">48 小時試用</a>
+      <a class="btn primary" href="download.html#trial-start">48 小時試用</a>
     </div>
   </div>
 </nav>
@@ -138,14 +146,32 @@
         <h1>少刷群組。<br><span>先看值得看的單。</span></h1>
         <p class="lead">把 LINE 車趟訊息整理成可以快速判斷的資訊：接駕距離、行程公里、估價、肥單、即時／預約、順路、報時與導航。</p>
         <div class="actions">
-          <a class="btn primary" href="https://lin.ee/y9RBpXc" target="_blank" rel="noopener">免費試用 48 小時</a>
-          <a class="btn gold" href="download.html">下載 Android App</a>
+          <a class="btn primary" href="download.html#trial-start">48 小時免費試用</a>
+          <a class="btn gold" href="download.html#apk-download">下載 Android APK</a>
         </div>
         <div class="proof"><span>不綁信用卡</span><span>不自動續費</span><span>可直接覆蓋更新</span></div>
       </div>
       <div class="logoHero"><div class="logoCard"><img src="hta-tangxun-icon.webp" alt="HTA 趟訊金框紅車 Logo"></div></div>
     </div>
   </header>
+
+
+  <section class="trialPath" id="trialPath">
+    <div class="wrap">
+      <div class="trialPathBox">
+        <div class="trialPathHead">
+          <div><div class="eyebrow">48 小時免費試用</div><h2>下載後，3 步開始試用</h2></div>
+          <p>不是下載完就自動開通。安裝後把手機號碼＋裝置碼傳給官方 LINE，客服完成授權才開始計時。</p>
+        </div>
+        <div class="trialPathGrid">
+          <div class="trialPathStep"><b><i>①</i>下載並安裝 HTA趟訊</b><span>從官網取得最新版 Android APK。</span></div>
+          <div class="trialPathStep"><b><i>②</i>打開 APP，複製裝置碼</b><span>第一次開啟時即可看到專屬裝置碼。</span></div>
+          <div class="trialPathStep"><b><i>③</i>傳給官方 LINE 開通</b><span>提供「手機號碼＋裝置碼」，客服確認後開通。</span></div>
+        </div>
+        <div class="trialPathNote">48 小時從授權正式開通後開始計算，不是從下載 APP 的時間開始。</div>
+      </div>
+    </div>
+  </section>
 
   <section class="quick">
     <div class="wrap">
@@ -155,7 +181,7 @@
         <a class="quickCard" href="guide.html"><span class="quickIcon">✓</span><b>新手必看</b><small>通知・群組・權限・漏單排查</small></a>
         <a class="quickCard" href="#video"><span class="quickIcon">▶</span><b>操作影片</b><small>實機畫面先看</small></a>
         <a class="quickCard" href="pricing.html"><span class="quickIcon">＄</span><b>方案價格</b><small>首月 499・月／季／年</small></a>
-        <a class="quickCard" href="download.html"><span class="quickIcon">↓</span><b>下載 App</b><small>Android APK・安裝教學</small></a>
+        <a class="quickCard" href="download.html#apk-download"><span class="quickIcon">↓</span><b>下載 Android APK</b><small>安裝後回 LINE 開通試用</small></a>
         <a class="quickCard" href="updates.html"><span class="quickIcon">↻</span><b>版本更新</b><small id="currentVersionText">每版新增／優化／修正</small></a>
         <a class="quickCard" href="https://lin.ee/y9RBpXc" target="_blank" rel="noopener"><span class="quickIcon">●</span><b>官方 LINE</b><small>試用・購買・續費・客服</small></a>
         <button class="quickCard" id="installShortcut" type="button" style="color:inherit;text-align:left;cursor:pointer"><span class="quickIcon">＋</span><b>建立桌面捷徑</b><small id="installShortcutText">像 App 一樣從桌面直接開官網</small></button>
@@ -225,11 +251,11 @@
         <div>
           <div class="eyebrow">新用戶優惠</div>
           <div class="priceBig">首月 NT$499</div>
-          <p>先免費試用 48 小時。之後月繳 NT$599；另有季繳與年繳方案。</p>
+          <p>先免費試用 48 小時，從授權正式開通後開始計算。之後月繳 NT$599；另有季繳與年繳方案。</p>
         </div>
         <div class="priceActions">
           <a class="btn ghost" href="pricing.html">看完整方案</a>
-          <a class="btn primary" href="https://lin.ee/y9RBpXc" target="_blank" rel="noopener">申請試用</a>
+          <a class="btn primary" href="download.html#trial-start">查看 3 步試用流程</a>
         </div>
       </div>
     </div>
@@ -264,7 +290,7 @@
 
 <div class="mobileCta">
   <a class="btn ghost" href="download.html">下載 App</a>
-  <a class="btn primary" href="https://lin.ee/y9RBpXc" target="_blank" rel="noopener">48 小時試用</a>
+  <a class="btn primary" href="download.html#trial-start">48 小時試用</a>
 </div>
 
 <script>
@@ -285,7 +311,7 @@ document.getElementById("installShortcut")?.addEventListener("click", async () =
   }
   const ua = navigator.userAgent || "";
   if (/iphone|ipad|ipod/i.test(ua)) {
-    alert("iPhone／iPad：請點 Safari 下方「分享」→「加入主畫面」。");
+    alert("這只是官網捷徑：iPhone／iPad 可將 htaxun.com 加入主畫面，但 HTA 趟訊 App 目前僅支援 Android。");
   } else {
     alert("Android：請點瀏覽器右上角「⋮」→「加到主畫面」或「安裝應用程式」。");
   }
