@@ -81,7 +81,7 @@
     .videoMeta{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 18px;background:#10141a;border-top:1px solid var(--line)}
     .videoMeta b{font-size:16px}.videoMeta span{display:block;color:#838c99;font-size:11px;margin-top:2px}
 
-    .value{padding:46px 0}
+    .advantage{padding:48px 0}.advantageBox{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;border:1px solid rgba(216,171,93,.22);border-radius:26px;padding:24px;background:linear-gradient(145deg,rgba(216,171,93,.07),rgba(239,54,86,.035)),#0f1319}.advantageBox img{display:block;width:100%;border-radius:18px;border:1px solid rgba(255,255,255,.08)}.advantageBox h2{font-size:clamp(30px,4vw,44px);line-height:1.1;letter-spacing:-.04em;margin:7px 0 12px}.advantageBox p{color:#9aa2af;font-size:14px}.advList{display:grid;gap:8px;margin:16px 0}.advList div{font-size:13px;color:#d7dbe2}.advList div::before{content:"✓ ";color:#61e4a2;font-weight:900}@media(max-width:760px){.advantageBox{grid-template-columns:1fr}}\n    .value{padding:46px 0}
     .valueGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .valueCard{border:1px solid var(--line);border-radius:20px;padding:23px;background:linear-gradient(145deg,#121720,#0d1015)}
     .valueCard .num{font-size:12px;color:var(--gold2);font-weight:900}.valueCard h3{font-size:20px;margin:10px 0 7px}.valueCard p{font-size:13px;color:#969eab;margin:0}
@@ -175,6 +175,26 @@
           <div><b>HTA 趟訊 APP 實機操作</b><span>影片主體使用 HTA 趟訊實際 APP 畫面</span></div>
           <a class="btn ghost" href="hta-main-demo.mp4?v=20260927-realapp-final2" target="_blank" rel="noopener">放大播放</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="advantage">
+    <div class="wrap">
+      <div class="advantageBox">
+        <div>
+          <div class="eyebrow">不只抓單</div>
+          <h2>接到這趟之後，HTA 還會繼續幫你找下一趟。</h2>
+          <p>從抓單到喊單只是前半段。HTA 再往後做到目的地雷達、預約時間窗、可信喊單歷史、效益雷達與完成車趟。</p>
+          <div class="advList">
+            <div>目的地雷達：以下車地為中心找下一趟</div>
+            <div>效益雷達：每公里營收、接駕占比、油資估算</div>
+            <div>真正送出才進歷史，並區分已接到／沒接到</div>
+            <div>🚫 略過本單，跨群轉貼也不再一直跳</div>
+          </div>
+          <a class="btn gold" href="features.html#advanced">看完整進階功能</a>
+        </div>
+        <a href="features.html#advanced"><img src="hta-advantage-flow.webp?v=20260928" alt="HTA 趟訊從抓單到目的地雷達與完成紀錄的完整流程"></a>
       </div>
     </div>
   </section>
