@@ -34,6 +34,32 @@ jobs:
 
           version = str(update.get("versionName", "")).lstrip("v")
           notes = str(update.get("notes", "")).strip()
+
+          # Public update notes should be short and easy to understand.
+          # Remove version prefixes and keep only the first one or two useful sentences.
+          import re
+          notes = re.sub(r"^v?\\d+(?:\\.\\d+)+[：:]\\s*", "", notes, flags=re.I)
+          replacements = {
+              "geocoder": "地址定位",
+              "parser": "車單辨識",
+              "sentConfirmed": "已送出",
+              "sourceKey": "來源記錄",
+              "repost": "重複轉貼",
+              "PendingIntent": "系統限制",
+              "SystemUI": "通知列",
+              "回歸測試": "測試",
+          }
+          for old, new in replacements.items():
+              notes = notes.replace(old, new)
+          parts = [p.strip() for p in re.split(r"(?<=[。！？!?])", notes) if p.strip()]
+          if parts:
+              short = parts[0]
+              if len(short) < 55 and len(parts) > 1 and len(short + parts[1]) <= 100:
+                  short += parts[1]
+              notes = short
+          if len(notes) > 110:
+              notes = notes[:110].rstrip("，、；;：: ") + "…"
+
           today = datetime.now(ZoneInfo("Asia/Taipei")).strftime("%Y-%m-%d")
 
           found = False
