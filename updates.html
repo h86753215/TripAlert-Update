@@ -62,7 +62,7 @@ Promise.all([
     const v=String(update.versionName).replace(/^v/i,"");
     const found=history.find(x=>String(x.version).replace(/^v/i,"")===v);
     if(!found) history.unshift({version:v,date:"",notes:update.notes||""});
-    else if(update.notes) found.notes=update.notes;
+    else if(!found.notes && update.notes) found.notes=update.notes;
   }
   history.sort((a,b)=>{
     const pa=String(a.version||"0").split(".").map(Number), pb=String(b.version||"0").split(".").map(Number);
