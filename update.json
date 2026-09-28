@@ -1,6 +1,1 @@
-{
-  "versionCode": 164,
-  "versionName": "0.6.83",
-  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.83.apk",
-  "notes": "v0.6.83：整合 HTA 地標庫 v1 並正式接入 parser、地址可信度與 geocoder，雙北＋桃園內建 300+ 行政區／社區／大樓／車站／醫院／商場／飯店／常用地標與別名；新增 🚫「略過本單」並可在設定恢復，✕ 仍維持 5 分鐘暫時隱藏。歷史頁改為只收你真正送出的喊單，不論是否接到都永久保留並可看原文，另顯示 ⏳未確認／✅已接到／❌沒接到；沒接到不再算待補記帳。舊版未驗證歷史預設收起，可顯示更多／顯示更少或全部刪除。目的地雷達可再次按回目前位置。私訊、@我、肥單、超近單各有獨立提示音開關；音效擴充到 22 種，新增硬幣、鋼琴、鞭炮、短衝擊、飛機、火箭、金屬鐘、木敲、號角與無線電等短音效。"
-}
+{"versionCode":165,"versionName":"0.6.84","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.84.apk","notes":"HTA 趟訊 0.6.84 已發布，可直接覆蓋更新。"}
