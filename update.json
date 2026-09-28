@@ -1,6 +1,1 @@
-{
-  "versionCode": 162,
-  "versionName": "0.6.81",
-  "apkUrl": "https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.81.apk",
-  "notes": "v0.6.81：目的地雷達按鈕改成真正雙向切換；第一次按「🎯目的地附近」會以已接單目的地為中心看附近車單，再按同一顆按鈕會變成「📍回目前位置」並切回手機 GPS 為中心，但不清除已存目的地。歷史頁維持新版主歷史只收你自己真正按 LINE 送出成功的喊單，別人喊的、競爭提醒、一般抓到的車單不會進主歷史；同時把舊版由你按喊單流程留下、但當時無法驗證最後是否送出的紀錄重新顯示在獨立「舊版我的喊單紀錄（未驗證）」區，可看原文／刪除，但不計入目前筆數、收入或公里統計。所有提示音仍有獨立開／關，音色下拉只決定開啟時播放哪種聲音。"
-}
+{"versionCode":162,"versionName":"0.6.81","apkUrl":"https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-v0.6.81.apk","notes":"HTA 趟訊 0.6.81 已發布，可直接覆蓋更新。"}
