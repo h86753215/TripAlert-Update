@@ -1,6 +1,1 @@
-{
-  "versionCode": 167,
-  "versionName": "0.6.86",
-  "apkUrl": "https://htaxun.com/TripAlert-v0.6.86.apk",
-  "notes": "修正已接到車單後無法完成行程與記帳的問題。現在接到後可直接標記客上、完成，並輸入實際公里、收入與備註。"
-}
+{"versionCode":168,"versionName":"0.6.87","apkUrl":"https://htaxun.com/TripAlert-v0.6.87.apk","notes":"HTA 趟訊 0.6.87 已發布，可直接覆蓋更新。"}
