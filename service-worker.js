@@ -1,4 +1,4 @@
-const CACHE = "hta-site-v4";
+const CACHE = "hta-site-v5";
 const CORE = [
   "/",
   "/index.html",
