@@ -19,7 +19,7 @@
   ],
   "shortcuts": [
     {
-      "name": "下載 App",
+      "name": "下載 Android APK",
       "short_name": "下載",
       "url": "/download.html",
       "icons": [{"src":"/hta-tangxun-icon.webp","sizes":"any","type":"image/webp"}]
