@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090a0e">
+  <meta name="description" content="HTA 趟訊新手必看：授權、LINE通知、群組通知、通知存取、定位與一鍵喊單設定，以及漏單排查與進階功能說明。">
+  <link rel="canonical" href="https://htaxun.com/guide.html">
+  <link rel="icon" href="hta-tangxun-icon.webp">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>新手必看｜HTA 趟訊</title>
+  <style>
+    :root{--bg:#090a0e;--panel:#11151c;--panel2:#151a22;--text:#f7f8fb;--muted:#9aa2af;--line:rgba(255,255,255,.09);--gold:#d8ab5d;--gold2:#f1d698;--red:#ef3656;--green:#61e4a2;--blue:#6aa8ff;--max:940px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(820px 500px at 85% -10%,rgba(239,54,86,.12),transparent 67%),linear-gradient(180deg,#08090d,#0b0d12 55%,#08090d);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.72}
+    a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+    nav{position:sticky;top:0;z-index:50;background:rgba(9,10,14,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:10px;font-weight:900}.brand img{width:34px;height:34px;border-radius:10px}.navlinks{display:flex;gap:12px;font-size:13px;color:#b8c0cb}.navlinks a:hover{color:#fff}
+    header{padding:58px 0 28px}.eyebrow{font-size:11px;color:var(--gold2);font-weight:900;letter-spacing:.12em}.title{font-size:clamp(40px,7vw,64px);line-height:1.06;letter-spacing:-.045em;margin:10px 0 12px}.sub{color:var(--muted);font-size:16px;max-width:760px;margin:0}
+    .alert{margin:26px 0 0;padding:18px 20px;border:1px solid rgba(239,54,86,.35);background:linear-gradient(135deg,rgba(239,54,86,.10),rgba(216,171,93,.05));border-radius:18px}.alert b{color:#fff}.alert strong{color:#ff8092}
+    .jump{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}.jump a{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.025);font-size:12px;color:#cbd1da}
+    section{padding:34px 0}.sectionTitle{font-size:clamp(28px,4vw,40px);line-height:1.12;letter-spacing:-.035em;margin:6px 0 8px}.lead{color:var(--muted);margin:0 0 18px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{border:1px solid var(--line);border-radius:20px;padding:22px;background:linear-gradient(145deg,#131820,#0d1015)}.card .n{font-size:12px;color:var(--gold2);font-weight:900}.card h3{font-size:20px;margin:8px 0 7px}.card p{font-size:14px;color:#a2aab6;margin:0}.card b{color:#fff}.wide{grid-column:span 2}
+    .must{border-color:rgba(239,54,86,.28)}.ok{border-color:rgba(97,228,162,.22)}.tag{display:inline-flex;margin-top:10px;padding:5px 9px;border-radius:999px;border:1px solid rgba(97,228,162,.22);color:#8af0ba;background:rgba(97,228,162,.05);font-size:11px;font-weight:850}
+    .check{display:grid;gap:9px;margin-top:14px}.check div{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:rgba(255,255,255,.025);font-size:14px;color:#c9cfd8}.check div::before{content:"✓ ";color:var(--green);font-weight:900}
+    .danger{display:grid;gap:9px}.danger div{border-left:3px solid var(--red);padding:10px 14px;background:rgba(239,54,86,.045);border-radius:0 12px 12px 0;color:#c8ced7;font-size:14px}.danger b{color:#fff}
+    .example{margin-top:12px;padding:13px 14px;border-radius:14px;background:#0b0e13;border:1px dashed rgba(216,171,93,.32);font-size:13px;color:#cdd3dc}.example b{color:var(--gold2)}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.flow div{position:relative;text-align:center;border:1px solid var(--line);border-radius:16px;padding:15px 8px;background:#11151c;font-size:12px;color:#c8ced7}.flow b{display:block;color:#fff;font-size:14px;margin-bottom:4px}.flow div:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);z-index:2;color:var(--gold2);font-size:18px}
+    .cta{margin:28px 0 70px;padding:24px;border:1px solid rgba(216,171,93,.28);border-radius:22px;background:linear-gradient(135deg,rgba(216,171,93,.08),rgba(239,54,86,.05));display:flex;justify-content:space-between;align-items:center;gap:16px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:13px;padding:12px 17px;font-weight:850;border:1px solid var(--line)}.primary{background:linear-gradient(135deg,#ef3656,#bd1535);border-color:transparent}.ghost{background:rgba(255,255,255,.03)}
+    footer{border-top:1px solid var(--line);padding:30px 0 56px;text-align:center;color:#737c89;font-size:12px}
+    @media(max-width:700px){.navlinks{display:none}.grid{grid-template-columns:1fr}.wide{grid-column:auto}.flow{grid-template-columns:1fr}.flow div:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-18px;transform:translateX(-50%)}.cta{align-items:flex-start;flex-direction:column}.cta .btn{width:100%}}
+  </style>
+</head>
+<body>
+<nav><div class="wrap nav">
+  <a class="brand" href="./"><img src="hta-tangxun-icon.webp" alt="">HTA 趟訊</a>
+  <div class="navlinks"><a href="#setup">必開設定</a><a href="#test">第一次測試</a><a href="#trouble">漏單排查</a><a href="#advanced">進階功能</a><a href="./">回首頁</a></div>
+</div></nav>
+
+<header><div class="wrap">
+  <div class="eyebrow">START HERE</div>
+  <h1 class="title">新手先設定好，<br>才不會以為「怎麼沒抓到單」。</h1>
+  <p class="sub">HTA 趟訊是依 Android 收到的 LINE 通知來辨識車趟。第一次使用最重要的不是先按一堆功能，而是先確認「LINE 有通知、群組有通知、HTA 有通知存取權限」。</p>
+  <div class="alert"><strong>最重要的一句：</strong> 如果某個 LINE 群組的訊息 <b>完全沒有出現在 Android 通知列</b>，HTA 就沒有那則通知可以即時解析。群組通知被關掉，是新手最常見的漏單原因之一。</div>
+  <div class="jump"><a href="#setup">① 必開設定</a><a href="#license">② 授權方式</a><a href="#test">③ 第一次測試</a><a href="#trouble">④ 沒抓到怎麼查</a><a href="#advanced">⑤ 進階功能看懂</a></div>
+</div></header>
+
+<main><div class="wrap">
+<section id="setup">
+  <div class="eyebrow">MUST ENABLE</div>
+  <h2 class="sectionTitle">開始前，這些一定要確認</h2>
+  <p class="lead">只要其中一層被關掉，就可能造成「LINE 有訊息，但 HTA 沒看到」。</p>
+  <div class="grid">
+    <div class="card must"><div class="n">01</div><h3>LINE 系統通知要開</h3><p>Android「設定 → 通知 → LINE」必須允許通知。HTA 不是去讀你的完整 LINE 聊天紀錄，而是從手機收到的通知內容即時整理。</p><span class="tag">通知列要收得到 LINE</span></div>
+    <div class="card must"><div class="n">02</div><h3>接單群組通知要開</h3><p>你想讓 HTA 抓哪個派單群，那個群組就要能正常發出通知。<b>如果該群組被設成完全不通知，HTA 就無法從那則通知即時抓單。</b></p><span class="tag">最常見漏單原因</span></div>
+    <div class="card must"><div class="n">03</div><h3>允許 HTA「通知存取」</h3><p>第一次開 App 請依畫面進入 Android 的通知存取設定，允許 HTA 趟訊讀取通知。沒有這個權限，就無法進行 LINE 車趟辨識。</p><span class="tag">核心必要權限</span></div>
+    <div class="card must"><div class="n">04</div><h3>定位權限要開</h3><p>接駕距離、超近單、順路、目前位置與目的地雷達都會用到定位。若只想看文字車單仍可能看到部分資訊，但距離類功能會不完整。</p><span class="tag">距離／順路／雷達需要</span></div>
+    <div class="card"><div class="n">05</div><h3>一鍵喊單服務</h3><p>若要使用快速進群、真 @、自動帶入喊單文字，需依 App 指示開啟 HTA 的一鍵標記／無障礙服務。<b>HTA 不會替你自動按最後的送出鍵</b>，最後仍由你確認後送出。</p></div>
+    <div class="card"><div class="n">06</div><h3>不要把 HTA／LINE 強制停止</h3><p>若 Android 把 App 強制停止、限制背景運作或手機省電過度嚴格，通知與定位可能延遲。若發現偶發漏單，先確認兩個 App 都能正常在背景運作。</p></div>
+  </div>
+</section>
+
+<section id="license">
+  <div class="eyebrow">ACTIVATION</div>
+  <h2 class="sectionTitle">授權怎麼開？手機號碼＋裝置碼</h2>
+  <p class="lead">目前正式版採單機授權：台灣手機號碼與這台 Android 手機的裝置碼綁定。</p>
+  <div class="flow">
+    <div><b>① 開啟 App</b>找到裝置碼</div>
+    <div><b>② 準備門號</b>09 開頭 10 碼</div>
+    <div><b>③ 傳官方 LINE</b>門號＋裝置碼</div>
+    <div><b>④ 客服開通</b>取得授權碼</div>
+    <div><b>⑤ 貼回 App</b>完成啟用</div>
+  </div>
+  <div class="alert"><b>換手機時不要自己猜：</b>授權碼會綁裝置。換機、重綁或遇到授權錯誤，直接找官方 LINE 處理。</div>
+</section>
+
+<section id="test">
+  <div class="eyebrow">FIRST TEST</div>
+  <h2 class="sectionTitle">第一次使用，先做 1 次「通知實測」</h2>
+  <p class="lead">不要等真的出肥單才發現某個權限沒開。開通後先挑一個會有車趟訊息的群組測試。</p>
+  <div class="check">
+    <div>LINE 群組出現新訊息時，Android 通知列有看到該訊息。</div>
+    <div>HTA 首頁能收到並產生車單卡片，至少能看到來源／上下車資訊。</div>
+    <div>有上下車地址時，確認接駕距離與行程公里是否合理。</div>
+    <div>按 10／15／20 分喊單，確認能進到正確 LINE 群組並帶入 @＋喊單文字。</div>
+    <div>最後自己按 LINE 送出；送出後再回 HTA 看「我的喊單歷史」是否有正確記錄。</div>
+  </div>
+</section>
+
+<section id="trouble">
+  <div class="eyebrow">TROUBLESHOOTING</div>
+  <h2 class="sectionTitle">沒抓到單？照這個順序查最快</h2>
+  <div class="danger">
+    <div><b>只有某一個群抓不到：</b>先查那個 LINE 群組本身的通知是不是被關掉。</div>
+    <div><b>全部 LINE 都抓不到：</b>查 Android 的 LINE 通知，以及 HTA 的「通知存取」權限。</div>
+    <div><b>有卡片但距離沒有／怪怪的：</b>查定位權限、GPS、網路，再確認地址是不是特殊地標或簡寫。</div>
+    <div><b>可以看到單但喊單進錯群：</b>先從「看原文」確認來源群，並回報該群名稱／原文；HTA 會優先使用通知與群組記憶，再以搜尋備援。</div>
+    <div><b>剛按 X 後又看不到：</b>✕ 是 5 分鐘暫時隱藏；🚫「略過本單」則是另一個更長效的略過邏輯，可在設定中恢復。</div>
+    <div><b>程式突然變慢：</b>先更新到最新版。v0.6.84 已針對地標庫／目的地雷達重複計算做緊急效能修正。</div>
+  </div>
+  <div class="example"><b>回報最好附：</b>群組名稱、完整原文、HTA 畫面截圖，以及「應該怎麼判斷」。這比只說「沒抓到」更容易快速修正。</div>
+</section>
+
+<section id="advanced">
+  <div class="eyebrow">HTA ADVANCED</div>
+  <h2 class="sectionTitle">這些功能，新手最容易「有看到但不知道在幹嘛」</h2>
+  <p class="lead">HTA 不只把 LINE 單變卡片，後面還做了接單後的規劃、可信歷史與效益判斷。</p>
+  <div class="grid">
+    <div class="card ok"><div class="n">A1</div><h3>目的地雷達</h3><p><b>情境：</b>你已接到「桃園 → 台北」。不用等到台北才開始找下一單，HTA 可把「台北下車地」先當雷達中心，找目的地附近的下一趟。</p><span class="tag">這趟還沒跑完，就開始規劃下一趟</span></div>
+    <div class="card ok"><div class="n">A2</div><h3>效益雷達</h3><p>金額高不一定比較肥。HTA 可一起看接駕＋行程總公里、每公里營收、接駕占比；填油價／油耗後還能估油資與扣油後收入。</p><span class="tag">不是只看「這張多少錢」</span></div>
+    <div class="card ok"><div class="n">A3</div><h3>預約時間窗</h3><p>除了「即時／預約」，還能依 1／2／4 小時內或之後篩預約單。適合問自己：<b>我現在這個空檔，哪張預約剛好接得上？</b></p></div>
+    <div class="card ok"><div class="n">A4</div><h3>真正送出才算我的喊單</h3><p>HTA 不把「只是按過喊單按鈕」當成你真的喊過。主歷史會等到偵測你真的按 LINE 送出，並可再標示未確認／已接到／沒接到。</p></div>
+    <div class="card ok"><div class="n">A5</div><h3>🚫 略過本單</h3><p>不想看的同一張單，如果在不同群一直轉貼，不用每次都 X。🚫 會略過同一邏輯車單與相關競爭提醒；按錯也能去設定恢復。</p></div>
+    <div class="card ok"><div class="n">A6</div><h3>HTA 地標庫</h3><p>雙北＋桃園已內建 300+ 行政區、社區、大樓、車站、醫院、商場、飯店與常用地標／別名，像「林口民視」這類地標會參與 parser 與地址可信度判斷。</p></div>
+    <div class="card ok"><div class="n">A7</div><h3>群組專屬喊單格式</h3><p>不是每個群都照同一套規則。可依群組套不同模板，例如 MOMO 用路名＋分鐘，其他群組用行政區＋分鐘。</p></div>
+    <div class="card ok"><div class="n">A8</div><h3>接到之後也有流程</h3><p>可確認接到／沒接到、待客上、完成車趟，並保留實際公里、收入與備註。工具不是只負責「搶到那一刻」。</p></div>
+  </div>
+  <div class="example"><b>一句話理解：</b>HTA 的方向是「抓單 → 篩選 → 判斷 → 喊單 → 確認接到 → 找下一趟 → 完成與統計」，不是只做到把群組訊息變漂亮。</div>
+</section>
+
+<div class="cta">
+  <div><b>設定看不懂，直接問官方 LINE。</b><div style="color:#99a1ae;font-size:13px;margin-top:4px">試用、開通、換機、漏單回報都可以直接處理。</div></div>
+  <a class="btn primary" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">加入官方 LINE</a>
+</div>
+</div></main>
+
+<footer><div class="wrap">© 2026 HTA 趟訊 · <a href="./">官網首頁</a> · <a href="features.html">功能介紹</a> · <a href="download.html">下載 App</a> · <a href="updates.html">版本更新</a></div></footer>
+</body>
+</html>
