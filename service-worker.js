@@ -1,4 +1,4 @@
-const CACHE = "hta-site-v5";
+const CACHE = "hta-site-v6";
 const CORE = [
   "/",
   "/index.html",
@@ -8,7 +8,8 @@ const CORE = [
   "/pricing.html",
   "/updates.html",
   "/hta-tangxun-icon.webp",
-  "/manifest.webmanifest"
+  "/manifest.webmanifest",
+  "/analytics.js"
 ];
 
 self.addEventListener("install", event => {
