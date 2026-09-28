@@ -588,7 +588,7 @@ HTA趟訊 用來快速篩選與估價。
 
 **直接下載：**
 
-https://raw.githubusercontent.com/h86753215/TripAlert-Update/main/TripAlert-latest.apk
+https://htaxun.com/TripAlert-latest.apk
 
 ---
 
