@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-title" content="HTA 趟訊">
   <meta property="og:title" content="HTA 趟訊｜少刷群組，先看值得看的單">
   <meta property="og:description" content="Android LINE 車趟輔助工具｜48 小時免費試用｜首月 NT$499。">
-  <meta property="og:image" content="https://htaxun.com/hta-tangxun-icon.webp">
+  <meta property="og:image" content="https://htaxun.com/hta-campaign-hero.webp">
   <meta property="og:url" content="https://htaxun.com/">
   <title>HTA 趟訊｜Android 車趟輔助工具</title>
   <style>
@@ -60,6 +60,14 @@
     .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
     .proof{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px;color:#8f97a5;font-size:12px}.proof span{padding:6px 9px;border:1px solid rgba(255,255,255,.06);border-radius:999px;background:rgba(255,255,255,.02)}.proof span::before{content:"✓ ";color:var(--green)}
     .logoHero{display:flex;justify-content:center}.logoCard{width:min(340px,80vw);padding:18px;border:1px solid rgba(255,255,255,.1);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));box-shadow:var(--shadow);transform:none}.logoCard img{width:100%;display:block;border-radius:24px;transform:none;object-fit:cover}
+
+    .campaignShowcase{padding:6px 0 34px}
+    .campaignCard{display:block;overflow:hidden;border-radius:26px;border:1px solid rgba(216,171,93,.25);background:#090b10;box-shadow:var(--shadow);position:relative}
+    .campaignCard::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.035)}
+    .campaignCard img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .campaignHint{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:12px 16px;border-top:1px solid var(--line);background:linear-gradient(90deg,rgba(239,54,86,.08),rgba(216,171,93,.055)),#0d1015;font-size:12px;color:#aab1bc}
+    .campaignHint b{color:#fff;font-size:13px}
+    @media(max-width:620px){.campaignShowcase{padding-top:0}.campaignCard{border-radius:20px}.campaignHint{align-items:flex-start;flex-direction:column}}
 
     .quick{padding:24px 0 46px}
     .quickTitle{text-align:center;color:#8f97a5;font-size:13px;margin-bottom:15px}
@@ -155,6 +163,15 @@
     </div>
   </header>
 
+
+  <section class="campaignShowcase" aria-label="HTA 趟訊主視覺">
+    <div class="wrap">
+      <a class="campaignCard" href="download.html#trial-start">
+        <img src="hta-campaign-hero.webp?v=20260928" alt="HTA 趟訊｜少刷群組，先看值得看的單｜48 小時免費試用">
+        <div class="campaignHint"><b>真實 APP 操作感 × 黑紅金科技主視覺</b><span>點圖查看 48 小時免費試用流程</span></div>
+      </a>
+    </div>
+  </section>
 
   <section class="trialPath" id="trialPath">
     <div class="wrap">
