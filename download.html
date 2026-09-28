@@ -122,6 +122,22 @@
       .label{padding-bottom:7px}.value{padding-top:7px}
       .pricingTop{align-items:flex-start;flex-direction:column}
     }
+  
+    .downloadActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch;margin-bottom:10px}
+    .downloadActions .btn{width:100%;min-height:52px}
+    .downloadHint{max-width:650px;margin:10px auto 0;color:#c4cad3;font-size:13px;line-height:1.75}
+    .trialStart{margin:20px 0 18px;border:1px solid rgba(216,171,93,.28);border-radius:24px;padding:24px;background:linear-gradient(145deg,rgba(216,171,93,.08),rgba(239,54,86,.04)),#10141a}
+    .trialStart h2{font-size:28px;margin:0 0 6px;letter-spacing:-.025em}.trialStart>.lead{margin:0 0 16px}
+    .trialSteps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .trialStep{border:1px solid rgba(255,255,255,.08);border-radius:17px;padding:17px;background:rgba(255,255,255,.025)}
+    .trialStep .trialNum{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;background:linear-gradient(135deg,#f1d698,#c99b4e);color:#17120a;font-weight:950}
+    .trialStep b{display:block;font-size:15px;margin-bottom:5px}.trialStep p{margin:0;color:#9fa7b3;font-size:13px}
+    .trialFoot{margin-top:14px;border-radius:14px;padding:12px 14px;background:rgba(97,228,162,.06);border:1px solid rgba(97,228,162,.18);color:#bff5d8;font-size:13px;font-weight:750}
+    .faq{margin:28px 0}.faq h2{font-size:28px;margin-bottom:12px}.faqGrid{display:grid;gap:9px}
+    .faqItem{border:1px solid rgba(255,255,255,.08);border-radius:17px;padding:18px;background:#10141a}
+    .faqItem b{display:block;margin-bottom:5px;color:#f2d79b}.faqItem p{margin:0;color:#aab2be;font-size:13px}
+    @media(max-width:650px){.downloadActions,.trialSteps{grid-template-columns:1fr}.trialStart{padding:18px}.trialStart h2,.faq h2{font-size:24px}}
+
   </style>
 </head>
 <body>
@@ -144,19 +160,33 @@
 
   <main>
     <div class="wrap">
-      <div class="download">
-        <a class="btn downloadBtn" id="apkDownload" href="TripAlert-latest.apk" download="HTA趟訊-latest.apk">⬇ 下載 Android APK</a>
+      <div class="download" id="apk-download">
+        <div class="downloadActions">
+          <a class="btn downloadBtn" id="apkDownload" href="TripAlert-latest.apk" download="HTA趟訊-latest.apk">下載 Android APK</a>
+          <a class="btn lineBtn" href="https://lin.ee/z0N5Kbg" target="_blank" rel="noopener">我已安裝，前往 LINE 申請試用</a>
+        </div>
         <div class="meta" id="apkMeta">Android 9 以上・APK 直接安裝</div>
-        <div class="meta" style="margin-top:5px"><b>iPhone（iOS）目前無法使用</b></div>
-        <div class="alt"><a href="https://lin.ee/y9RBpXc" target="_blank" rel="noopener">還沒開通？先加入官方 LINE →</a></div>
+        <div class="downloadHint">HTA趟訊目前支援 Android。安裝完成後，請回官方 LINE 提供手機號碼＋裝置碼申請試用。</div>
+        <div class="meta" style="margin-top:7px"><b>目前僅支援 Android；iPhone／iOS 尚未支援。</b></div>
       </div>
+
+      <div class="notice"><b>Android APK 安裝提醒：</b>Android 第一次安裝 APK 時，系統可能要求允許「安裝未知應用程式」，或顯示安全提醒。請確認下載來源為 HTA趟訊官方網站 <b>htaxun.com</b> 後再繼續安裝。</div>
+
+      <section class="trialStart" id="trial-start">
+        <h2>下載後，3 步開始試用</h2>
+        <p class="lead">安裝完成後別停在這裡，照下面 3 步就能完成 48 小時免費試用申請。</p>
+        <div class="trialSteps">
+          <div class="trialStep"><div class="trialNum">1</div><b>下載並安裝 HTA趟訊</b><p>從官方網站取得最新版 Android APK。</p></div>
+          <div class="trialStep"><div class="trialNum">2</div><b>打開 APP，複製裝置碼</b><p>第一次開啟 HTA趟訊後，畫面會顯示您的專屬裝置碼。</p></div>
+          <div class="trialStep"><div class="trialNum">3</div><b>傳給官方 LINE 開通</b><p>將「手機號碼＋裝置碼」傳給 HTA趟訊官方 LINE，客服確認後即可開通 48 小時免費試用。</p></div>
+        </div>
+        <div class="trialFoot">48 小時從授權正式開通後開始計算，不是從下載 APP 的時間開始。</div>
+      </section>
 
       <div class="notice"><b>第一次使用請先看：</b> <a href="guide.html" style="color:#f1d698;text-decoration:underline">新手必看設定與漏單排查</a>。LINE 通知、接單群組通知與 HTA 通知存取權限都會影響能不能即時抓到車單。</div>
 
-      <div class="notice"><b>第一次安裝？</b> Android 可能會顯示「未知來源」或「不明應用程式」提示，這是因為 HTA 趟訊目前採官網 APK 安裝，不是從 Google Play 下載。請認明官方網站 <b>htaxun.com</b>。</div>
-
       <div class="spec">
-        <div class="row"><div class="label">系統需求</div><div class="value">Android <b>9 以上</b>；目前不支援 iPhone（iOS）</div></div>
+        <div class="row"><div class="label">系統需求</div><div class="value">目前正式版僅支援 Android <b>9 以上</b>；iPhone／iOS 尚未支援</div></div>
         <div class="row"><div class="label">安裝方式</div><div class="value">從 <b>htaxun.com</b> 下載 APK，直接安裝</div></div>
         <div class="row"><div class="label">使用前提</div><div class="value">需由官方 LINE 客服完成<b>試用或正式授權開通</b></div></div>
         <div class="row"><div class="label">主要權限</div><div class="value"><b>通知存取</b>（抓 LINE 車趟）、<b>定位</b>（距離／順路／雷達）、網路；使用快速喊單時依 App 指示開啟一鍵標記服務</div></div>
@@ -164,13 +194,13 @@
       </div>
 
       <section>
-        <h2>安裝只要 4 步</h2>
-        <p class="lead">第一次從官網安裝 APK 也不用怕，照下面做就好。</p>
+        <h2>Android 安裝與第一次設定</h2>
+        <p class="lead">上面的 3 步是試用流程；這裡補充 Android 安裝後需要完成的權限設定。</p>
         <div class="steps">
           <div class="step"><div class="num">1</div><div><b>下載 APK</b><span>用 Android 手機開這個頁面，按上方「下載 Android APK」。</span></div></div>
           <div class="step"><div class="num">2</div><div><b>允許此來源安裝</b><span>若系統跳出安全提示，進入設定後允許目前瀏覽器或檔案管理員安裝 App。</span></div></div>
           <div class="step"><div class="num">3</div><div><b>完成安裝並開啟</b><span>開啟 LINE 通知、接單群組通知、HTA 通知存取與定位。群組若完全不出 Android 通知，HTA 就沒有該則通知可即時解析。</span></div></div>
-          <div class="step"><div class="num">4</div><div><b>加入官方 LINE 開通</b><span>提供手機號碼與 App 顯示的裝置碼，由亞城協助開通 48 小時試用或正式授權。</span></div></div>
+          <div class="step"><div class="num">4</div><div><b>確認試用授權已開通</b><span>將手機號碼＋裝置碼傳給官方 LINE；客服完成授權後，48 小時試用才正式開始計算。</span></div></div>
         </div>
       </section>
 
@@ -179,13 +209,19 @@
           <div><div style="color:#f0d298;font-weight:850;font-size:13px">新用戶優惠</div><div class="priceTag">首月 NT$499</div></div>
           <a class="btn lineBtn" href="https://lin.ee/y9RBpXc" target="_blank" rel="noopener">LINE 申請試用／購買</a>
         </div>
-        <p>先免費試用 48 小時，再決定是否購買。首月體驗價每位新用戶限一次，後續月繳 NT$599。</p>
+        <p>先免費試用 48 小時，再決定是否購買。48 小時從授權正式開通後開始計算。首月體驗價每位新用戶限一次，後續月繳 NT$599。</p>
         <div class="small">不綁信用卡・不自動續費・付款方式由官方 LINE 客服提供。</div>
       </section>
 
-      <div class="warning">
-        <b>安全提醒：</b>請只從 <b>https://htaxun.com</b> 下載 HTA 趟訊。不要安裝他人轉傳、重新包裝或來源不明的 APK。HTA 趟訊為輔助工具，距離、估價、順路與提醒資訊仍應由使用者自行確認。
-      </div>
+      <section class="faq" id="faq">
+        <h2>試用常見問題</h2>
+        <div class="faqGrid">
+          <div class="faqItem"><b>Q：我下載 APP 了，為什麼還不能使用？</b><p>A：下載完成後還需要開通試用授權。請打開 APP 複製裝置碼，再將「手機號碼＋裝置碼」傳給官方 LINE。</p></div>
+          <div class="faqItem"><b>Q：48 小時試用從什麼時候開始？</b><p>A：從客服完成試用授權開通後開始計算，不是從下載 APP 開始。</p></div>
+          <div class="faqItem"><b>Q：為什麼需要手機號碼？</b><p>A：手機號碼僅用於授權綁定與使用者辨識，不會公開顯示。</p></div>
+          <div class="faqItem"><b>Q：裝置碼在哪裡？</b><p>A：第一次開啟 HTA趟訊的授權畫面即可看到，可直接點「複製裝置碼」。</p></div>
+        </div>
+      </section>
 
       <div class="support">
         <a class="btn lineBtn" href="https://lin.ee/y9RBpXc" target="_blank" rel="noopener">加入 HTA 趟訊官方 LINE</a>
