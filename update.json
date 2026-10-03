@@ -1,1 +1,1 @@
-{"versionCode":180,"versionName":"0.6.99","apkUrl":"https://htaxun.com/TripAlert-v0.6.99.apk","notes":"HTA 趟訊 0.6.99 已發布，可直接覆蓋更新。"}
+{"versionCode":180,"versionName":"0.6.99","apkUrl":"https://htaxun.com/TripAlert-v0.6.99.apk","notes":"修正「乘車時間：1400」未辨識成預約，並加強 LINE 將乘車時間／上車地址／下車地址拆成多段通知時的安全合併；五股→三芝的 T 前綴格式已納入回歸測試。可直接覆蓋更新，請勿先移除舊版。"}\n
