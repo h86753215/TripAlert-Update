@@ -62,27 +62,38 @@ jobs:
 
           today = datetime.now(ZoneInfo("Asia/Taipei")).strftime("%Y-%m-%d")
 
-          found = False
-          generic_note = ("已發布" in notes and "覆蓋更新" in notes and "：" not in notes and ":" not in notes)
-          for item in history:
-              if str(item.get("version","")).lstrip("v") == version:
-                  # Keep richer hand-authored notes when update.json only contains
-                  # the generic release sentence.
-                  if notes and (not generic_note or not item.get("notes")):
-                      item["notes"] = notes
-                  item["date"] = item.get("date") or today
-                  found = True
-                  break
+          generic_note = ("已發布" in notes and "覆蓋更新" in notes)
 
-          if version and not found:
-              history.insert(0, {"version": version, "date": today, "notes": notes})
+          # Same calendar date = same public update article.
+          day = next((item for item in history if item.get("date") == today), None)
+          if day is None:
+              day = {
+                  "date": today,
+                  "fromVersion": version,
+                  "version": version,
+                  "notes": "例行更新與穩定性改善。" if generic_note or not notes else notes,
+              }
+              history.insert(0, day)
+          else:
+              day["fromVersion"] = day.get("fromVersion") or day.get("version") or version
+              if version:
+                  day["version"] = version
 
-          def key(item):
-              try:
-                  return tuple(int(x) for x in str(item.get("version","0")).split("."))
-              except Exception:
-                  return (0,)
-          history.sort(key=key, reverse=True)
+              # Do not add another bullet for generic "published" messages.
+              if notes and not generic_note:
+                  current = [
+                      line.strip()
+                      for line in str(day.get("notes", "")).splitlines()
+                      if line.strip()
+                  ]
+                  if notes not in current:
+                      current.append(notes)
+                  # Keep only the important points; never let one day become a long list.
+                  if len(current) > 4:
+                      current = current[:3] + current[-1:]
+                  day["notes"] = "\n".join(current)
+
+          history.sort(key=lambda item: str(item.get("date", "")), reverse=True)
           path.write_text(json.dumps(history, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
           PY
 
