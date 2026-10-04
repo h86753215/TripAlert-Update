@@ -32,7 +32,7 @@
 <header><div class="wrap">
   <div class="eyebrow">VERSION HISTORY</div>
   <h1 class="title">版本更新</h1>
-  <p class="sub">從現在起，正式發佈的版本號與更新說明會自動同步到這一頁，並保留舊版本紀錄。</p>
+  <p class="sub">從現在起，同一天的更新會合併成一篇，只保留重要改動與版本範圍。</p>
 
   <div class="latest">
     <div class="latestTop">
@@ -58,28 +58,29 @@ Promise.all([
   fetch("changelog.json",{cache:"no-store"}).then(r=>r.ok?r.json():[])
 ]).then(([update,history])=>{
   history=Array.isArray(history)?history:[];
-  if(update&&update.versionName){
-    const v=String(update.versionName).replace(/^v/i,"");
-    const found=history.find(x=>String(x.version).replace(/^v/i,"")===v);
-    if(!found) history.unshift({version:v,date:"",notes:update.notes||""});
-    else if(!found.notes && update.notes) found.notes=update.notes;
-  }
-  history.sort((a,b)=>{
-    const pa=String(a.version||"0").split(".").map(Number), pb=String(b.version||"0").split(".").map(Number);
-    for(let i=0;i<Math.max(pa.length,pb.length);i++){const d=(pb[i]||0)-(pa[i]||0);if(d)return d}
-    return 0;
-  });
+  history.sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")));
 
   const latest=history[0]||{};
-  document.getElementById("latestVersion").textContent=latest.version?"v"+latest.version:"暫無版本";
+  const latestVersion=update&&update.versionName
+    ? String(update.versionName).replace(/^v/i,"")
+    : String(latest.version||"").replace(/^v/i,"");
+  document.getElementById("latestVersion").textContent=latestVersion?"v"+latestVersion:"暫無版本";
   document.getElementById("latestDate").textContent=latest.date||"";
-  const notes=splitNotes(latest.notes);
+  const notes=splitNotes(latest.notes).slice(0,4);
   document.getElementById("latestNotes").innerHTML=(notes.length?notes:["目前沒有更新說明"]).map(n=>"<li>"+n+"</li>").join("");
 
+  const versionLabel=item=>{
+    const from=String(item.fromVersion||item.version||"").replace(/^v/i,"");
+    const to=String(item.version||"").replace(/^v/i,"");
+    if(!to) return "";
+    return from&&from!==to ? "v"+from+" ～ v"+to : "v"+to;
+  };
+  const dateLabel=date=>String(date||"").replace(/-/g,"/");
+
   document.getElementById("history").innerHTML=history.slice(1).map(item=>{
-    const ns=splitNotes(item.notes);
-    return '<article class="release"><h2>v'+item.version+'</h2><div class="meta">'+(item.date||"")+'</div><ul>'+
-      (ns.length?ns:["未提供更新說明"]).map(n=>"<li>"+n+"</li>").join("")+
+    const ns=splitNotes(item.notes).slice(0,4);
+    return '<article class="release"><h2>'+dateLabel(item.date)+' 更新</h2><div class="meta">'+versionLabel(item)+'</div><ul>'+
+      (ns.length?ns:["例行更新與穩定性改善。"]).map(n=>"<li>"+n+"</li>").join("")+
       '</ul></article>';
   }).join("");
 }).catch(()=>{
