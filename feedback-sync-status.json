@@ -1,1 +1,1 @@
-{"status":"blocked","checkedAt":"2026-10-08T21:04:08.210080Z","reason":"Missing FIREBASE_SERVICE_ACCOUNT_JSON","createdIssues":0}
+{"status":"failure","checkedAt":"2026-10-08T22:14:34.305040Z","error":"Sync finished without a status result","createdIssues":0}
